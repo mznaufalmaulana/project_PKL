@@ -55,7 +55,7 @@
 			
 		}
 		#btnSubmit {
-			width: 100%;
+			width: 50%;
 			border: none;
 			outline: none;
 			height: 50px;
@@ -74,14 +74,14 @@
 	<div class="loginbox">
 		<img src="img/avatar.png" id="avatar">
 		<h1 style="text-align: center; color: black;">LOGIN HERE</h1>
-		<div class="container-fluid">
+		<!-- <div class="container-fluid"> -->
 			<form method="POST" action="<?php echo base_url('login')?>">
 				<input type="text" placeholder="Masukkan Username" name="uname" id="textBox" required>
 				<input type="password" placeholder="Masukkan Password" name="pass" id="textBox" required>
 				<p>Belum Mempunyai Akun?<a href="#">Klik Disini</a></p>
-				<button type="submit" id="btnSubmit">Login</button>
+				<div align="center"><button type="submit" id="btnSubmit">Login</button></div>
 			</form>
-		</div>
+		<!-- </div> -->
 	</div>
 </body>
 </html>
