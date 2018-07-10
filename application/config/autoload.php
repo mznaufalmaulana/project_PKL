@@ -7,7 +7,7 @@ $autoload['libraries'] = array("Soap_library");
 
 $autoload['drivers'] = array();
 
-$autoload['helper'] = array('url' , "string" , "form" , "cookie", "global" );
+$autoload['helper'] = array('url' , 'html' , "string" , "form" , "cookie", "global" );
 
 $autoload['config'] = array();
 

@@ -2,7 +2,7 @@
 /**
 * 
 */
-class Model_User extends MY_Model
+class M_User extends MY_Model
 {
 
 	function get_data_user($uname, $pass)
@@ -15,6 +15,14 @@ class Model_User extends MY_Model
 		// memanggil API
         $retVal = $this->retrieveData($retParameter , "CallSpExcecution");
         return $retVal;
+	}
+	function insert_user($arrPost)
+	{
+		$sp_name = "User_RegisterApp";
+		$retParameter = $this->soap_library->set_parameter($sp_name , $arrPost);
+		$retVal = $this->retrieveData($retParameter , "CallSpExcecution");
+		// echopre($retVal);die;
+		return $retVal;
 	}
 }
 
