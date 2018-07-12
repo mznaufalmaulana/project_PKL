@@ -96,6 +96,7 @@
 					<input type="password" placeholder="Masukkan Password" name="pass" id="textBox" required>
 					<p>Belum Mempunyai Akun?<a href="<?php echo base_url('c_register') ?>"> Klik Disini</a></p>
 					<div align="center"><button type="submit" id="btnSubmit">Masuk</button></div>
+					<p><?php echo $message = ''; ?></p>
 				</form>
 			</div>
 		</div>
