@@ -35,11 +35,42 @@
 </head>
 <body>
 		<div class="container-fluid">
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<h3>Kota</h3>
-				<form></form>
+				<form>
+					<label for='formCountries[]'>Select the countries that you have visited:</label><br>
+					<select multiple="multiple" name="formCountries[]">
+					    <option value="US">United States</option>
+					    <option value="UK">United Kingdom</option>
+					    <option value="France">France</option>
+					    <option value="Mexico">Mexico</option>
+					    <option value="Russia">Russia</option>
+					    <option value="Japan">Japan</option>
+					</select>
+				</form>
 			</div>
-			<div class="col-md-8" style="background-color: green;">b</div>
+			<div class="col-md-9">
+				<?php 
+					foreach ($data_dokter as $key => $value)
+					{
+						echo "<table border=\"0\">";
+							echo "<tr>";
+								echo "<td>";
+									echo "<img src=\" ". $value['imgAvatar'] ."\">";
+								echo "</td>";
+								echo "<td>";
+									echo "<h3>".$value['txtNamaDokter']."</h3><br/>";
+									echo $value['txtNoHP']."<br/>";
+									echo $value['txtAlamat']."<br/>";
+									echo $value['txtProvinsi']."<br/>";
+									echo $value['txtKota']."<br/>";
+									echo $value['txtSpesialis']."<br/>";
+								echo "</td>";
+							echo "</tr>";
+						echo "</table>";
+					}
+				?>
+			</div>
 		</div>
 </body>
 </html>
