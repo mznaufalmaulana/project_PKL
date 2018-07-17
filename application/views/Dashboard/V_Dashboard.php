@@ -31,22 +31,33 @@
 			background-repeat: no-repeat;
 			color: black;
 		}
+		select {
+			width: 100%;
+			padding: 5px;
+		}
 	</style>
 </head>
 <body>
 		<div class="container-fluid">
 			<div class="col-md-3">
-				<h3>Kota</h3>
-				<form>
-					<label for='formCountries[]'>Select the countries that you have visited:</label><br>
-					<select multiple="multiple" name="formCountries[]">
-					    <option value="US">United States</option>
-					    <option value="UK">United Kingdom</option>
-					    <option value="France">France</option>
-					    <option value="Mexico">Mexico</option>
-					    <option value="Russia">Russia</option>
-					    <option value="Japan">Japan</option>
-					</select>
+				<form method="POST" action="<?php echo base_url('c_dashboard') ?>">
+					<h3>Kota</h3>
+						<select id="bismillah">
+							<option value="" disabled selected>Pilih Kota</option>
+							
+						</select>
+					
+					<h3>Spesialis</h3>
+						<select>
+							<option value="" disabled selected>Pilih Spesialis</option>
+							<option value="">Umum</option>
+							<option value="">Anak</option>
+						</select>
+
+					<h3>Jenis Kelamin</h3>
+						<input type="radio" name="0" value="semua" checked="checked"> Semua<br>
+						<input type="radio" name="1" value="laki"> Laki-laki<br>
+						<input type="radio" name="2" value="perempuan"> Perempuan<br>
 				</form>
 			</div>
 			<div class="col-md-9">
@@ -72,5 +83,37 @@
 				?>
 			</div>
 		</div>
+
+		<script type="text/javascript">
+			$.ajax({
+				type: "POST",
+				url: "<?php echo base_url('C_Dashboard/getCategory') ?>",
+				contentType: "application/json",
+				dataType: "json",
+			}).done(function(city){
+				var select = document.getElementById("bismillah");
+				for (var i = 0; i < city.length; i++) {
+					var c = document.createElement("option");
+					c.text = city[i].txtKota;
+					select.options.add(c, 1);
+				};
+			});
+			// success: function(result){
+   //                   parsedobj = JSON.parse(result)
+   //                   var appenddata='';
+   //                      $.each(parsedobj.city, function(index, value) 
+   //                      {
+   //                          appenddata += "<option value = '" + index + "'>" + value.city + " </option>";    
+   //                      });
+
+   //                      $('#catCity').html(appenddata); 
+   //              },
+   //              error: function(xhr, textStatus, error){
+   //                  console.log(xhr.statusText);
+   //                  console.log(textStatus);
+   //                  console.log(error);
+   //              }
+   //          });
+		</script>
 </body>
 </html>
