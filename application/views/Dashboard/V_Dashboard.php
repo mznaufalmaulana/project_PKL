@@ -18,6 +18,25 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+	<script src="js/jquery-3.3.1.min.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			$('#catCity').change(function(){
+				var id_kota = $(this).val();
+
+				$.ajax({
+					type: "POST",
+					url: "<?php echo base_url('C_Dashboard/getCategory') ?>",
+					data: 'id_kota='+id_kota,
+					success: function(response) {
+						$();
+					}
+				});
+			});
+		});
+	</script>
+
 	<style type="text/css">
 		body {
 			margin: 0px;
@@ -42,9 +61,9 @@
 			<div class="col-md-3">
 				<form method="POST" action="<?php echo base_url('c_dashboard') ?>">
 					<h3>Kota</h3>
-						<select id="bismillah">
+						<select id="catCity">
 							<option value="" disabled selected>Pilih Kota</option>
-							
+							<script type="text/javascript">getCategoryCity();</script>
 						</select>
 					
 					<h3>Spesialis</h3>
@@ -85,19 +104,42 @@
 		</div>
 
 		<script type="text/javascript">
-			$.ajax({
-				type: "POST",
-				url: "<?php echo base_url('C_Dashboard/getCategory') ?>",
-				contentType: "application/json",
-				dataType: "json",
-			}).done(function(city){
-				var select = document.getElementById("bismillah");
-				for (var i = 0; i < city.length; i++) {
-					var c = document.createElement("option");
-					c.text = city[i].txtKota;
-					select.options.add(c, 1);
-				};
-			});
+			function getCategoryCity(){
+				$.ajax({
+					type: "POST"
+					url: "<?php echo base_url('C_Dashboard/getCategory')?>",
+					dataType: "json",
+					success: function(city){
+						parsedobj = JSON.parse(result)
+						var appendata;
+						$.each(parsedobj.city, function(index, value){
+							appenddata += "<option value = '" + index + " '>" + value.region + " </option>";
+						})
+						$('#catCity').html(appenddata);
+					}
+				})
+			}
+			function detCategorySpesialis(){
+
+			}
+
+
+			// $.ajax({
+			// 	type: "POST",
+			// 	url: "<?php //echo base_url('C_Dashboard/getCategory')?>",
+			// 	dataType: "json",
+			// 	success: function(city){
+				// var select = document.getElementById("catCity");
+				// for (var i = 0; i < city.length; i++) {
+					// var c = document.createElement("option");
+					// c.text = citi[i].txtKota;
+					// select.options.add(c, 1);
+			// 		console.log(city);
+			// 		document.write("gusna")
+			// 	};
+
+			// });
+			// document.write("ygvygbnubv");
 			// success: function(result){
    //                   parsedobj = JSON.parse(result)
    //                   var appenddata='';

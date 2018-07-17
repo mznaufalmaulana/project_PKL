@@ -19,7 +19,7 @@
         $arrPost = array();
 		$retParameter = $this->soap_library->set_parameter($sp_name , $arrPost);
 		$retVal = $this->retrieveData($retParameter , "CallSpExcecution");
-	  	echopre($retVal);die;
+	  	// echopre($retVal);die;
 		return $retVal;
  	}
  } ?>
