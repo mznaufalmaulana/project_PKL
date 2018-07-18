@@ -14,7 +14,7 @@ class C_Dashboard extends CI_Controller
 	function index()
 	{
 		$session_id = $this->session->userdata('session_id');
-		if ($session_id == 'null') {
+		if ($session_id != 'null') {
 			redirect(base_url()."c_login");
 		}
 		else {
