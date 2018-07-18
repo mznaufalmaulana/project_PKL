@@ -20,23 +20,6 @@
 
 	<script src="js/jquery-3.3.1.min.js"></script>
 
-	<script>
-		$(document).ready(function(){
-			$('#catCity').change(function(){
-				var id_kota = $(this).val();
-
-				$.ajax({
-					type: "POST",
-					url: "<?php echo base_url('C_Dashboard/getCategory') ?>",
-					data: 'id_kota='+id_kota,
-					success: function(response) {
-						$();
-					}
-				});
-			});
-		});
-	</script>
-
 	<style type="text/css">
 		body {
 			margin: 0px;
@@ -54,6 +37,18 @@
 			width: 100%;
 			padding: 5px;
 		}
+		button {
+			width: 100%;
+			border: none;
+			outline: none;
+			border-radius: 20px;
+			height: 40px;
+			background-color: #37b60d;
+			color: white;
+		}
+		button:hover {
+			background-color: green;
+		}
 	</style>
 </head>
 <body>
@@ -61,22 +56,31 @@
 			<div class="col-md-3">
 				<form method="POST" action="<?php echo base_url('c_dashboard') ?>">
 					<h3>Kota</h3>
-						<select id="catCity">
-							<option value="" disabled selected>Pilih Kota</option>
-							<script type="text/javascript">getCategoryCity();</script>
+						<select class="form-control" id="catCity" name="kota">
+							<option value="0" disabled selected>Pilih Kota</option>
+							<?php 
+								foreach ($data_kota as $key => $value) {
+									echo "<option value=\"".$value['intIDKota']."\">".$value['txtKota']."</option>";
+								}
+							 ?>
 						</select>
 					
 					<h3>Spesialis</h3>
-						<select>
-							<option value="" disabled selected>Pilih Spesialis</option>
-							<option value="">Umum</option>
-							<option value="">Anak</option>
+						<select class="form-control" id="catCity" name="spesialis">
+							<option value="0" disabled selected>Pilih Spesialis</option>
+							<?php 
+								foreach ($data_spesialis as $key => $value) {
+									echo "<option value=\"".$value['intIDSpesialisDokter']."\">".$value['txtSpesialis']."</option>";
+								}
+							 ?>
 						</select>
 
 					<h3>Jenis Kelamin</h3>
-						<input type="radio" name="0" value="semua" checked="checked"> Semua<br>
-						<input type="radio" name="1" value="laki"> Laki-laki<br>
-						<input type="radio" name="2" value="perempuan"> Perempuan<br>
+						<input type="radio" name="jk_group" value="0" checked="checked"> Semua<br>
+						<input type="radio" name="jk_group" value="1"> Laki-laki<br>
+						<input type="radio" name="jk_group" value="2"> Perempuan<br><br>
+
+					<button type="submit" id="btnSubmit">Cari</button>
 				</form>
 			</div>
 			<div class="col-md-9">
@@ -104,24 +108,24 @@
 		</div>
 
 		<script type="text/javascript">
-			function getCategoryCity(){
-				$.ajax({
-					type: "POST"
-					url: "<?php echo base_url('C_Dashboard/getCategory')?>",
-					dataType: "json",
-					success: function(city){
-						parsedobj = JSON.parse(result)
-						var appendata;
-						$.each(parsedobj.city, function(index, value){
-							appenddata += "<option value = '" + index + " '>" + value.region + " </option>";
-						})
-						$('#catCity').html(appenddata);
-					}
-				})
-			}
-			function detCategorySpesialis(){
+			// function getCategoryCity(){
+			// 	$.ajax({
+			// 		type: "POST"
+			// 		url: "<?php //echo base_url('C_Dashboard/getCategory')?>",
+			// 		dataType: "json",
+			// 		success: function(city){
+			// 			parsedobj = JSON.parse(result)
+			// 			var appendata;
+			// 			$.each(parsedobj.city, function(index, value){
+			// 				appenddata += "<option value = '" + index + " '>" + value.region + " </option>";
+			// 			})
+			// 			$('#catCity').html(appenddata);
+			// 		}
+			// 	})
+			// }
+			// function detCategorySpesialis(){
 
-			}
+			// }
 
 
 			// $.ajax({
@@ -156,6 +160,6 @@
    //                  console.log(error);
    //              }
    //          });
-		</script>
+   		</script>
 </body>
 </html>

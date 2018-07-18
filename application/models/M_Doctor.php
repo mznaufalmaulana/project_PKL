@@ -13,9 +13,18 @@
 		// echopre($retVal);die;
 		return $retVal;
  	}
- 	function getCategory()
+ 	function getCategory_City()
  	{
  		$sp_name = "User_getKota";
+        $arrPost = array();
+		$retParameter = $this->soap_library->set_parameter($sp_name , $arrPost);
+		$retVal = $this->retrieveData($retParameter , "CallSpExcecution");
+	  	// echopre($retVal);die;
+		return $retVal;
+ 	}
+ 	function getCategory_Spesialis()
+ 	{
+ 		$sp_name = "User_getSpesialis";
         $arrPost = array();
 		$retParameter = $this->soap_library->set_parameter($sp_name , $arrPost);
 		$retVal = $this->retrieveData($retParameter , "CallSpExcecution");
