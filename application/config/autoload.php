@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $autoload['packages'] = array();
 
-$autoload['libraries'] = array("Soap_library");
+$autoload['libraries'] = array("session", "Soap_library");
 
 $autoload['drivers'] = array();
 
