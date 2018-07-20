@@ -2,7 +2,7 @@
 /**
 *
 */
-class Model_Faskes extends MY_Model
+class M_Faskes extends MY_Model
 {
 	function ambilData($sp_name,$arrParams)
 	{
