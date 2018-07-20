@@ -81,6 +81,8 @@
 
 		<div class="container-fluid">
 			<div class="col-md-3">
+				<a href="<?php echo base_url('c_dashboard')?>">Dokter</a>
+				<a href="<?php echo base_url('c_dashboard_faskes')?>">Faskes</a>
 				<form method="POST" action="<?php echo base_url('c_dashboard') ?>">
 					<h3>Kota</h3>
 						<select class="form-control" id="catCity" name="kota">
