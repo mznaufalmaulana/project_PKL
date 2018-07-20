@@ -9,28 +9,26 @@ class C_Dashboard extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->library('session');
+		$this->load->model('m_doctor');
 	}
 	function index()
 	{
-		$session_id = $this->session->userdata('session_id');
-		if ($session_id != 'null') {
-			redirect(base_url()."c_login");
-		}
-		else {
+		// if (isset($_SESSION)) {
 			$dt = array(
 					"txtKeyword" => "0",
 					"intIDKota" => $this->input->post("kota"),
 					"intIDSpesialisDokter" => $this->input->post("spesialis"),
 					"intIDJenisKelamin" => $this->input->post("jk_group")
 				);
-			$this->load->model('m_doctor');
 			$retVal ['data_dokter'] = $this->m_doctor->show_doctor($dt);
-			$retVal ['data_kota']= $this->getCategory_City();
-			$retVal ['data_spesialis']= $this->getCategory_Spesialis();
+			$retVal ['data_kota']= $this->m_doctor->getCategory_City();
+			$retVal ['data_spesialis']= $this->m_doctor->getCategory_Spesialis();
+			// $retVal ['data_kota']= $this->getCategory_City();
+			// $retVal ['data_spesialis']= $this->getCategory_Spesialis();
 			$this->load->view('Dashboard/V_Dashboard', $retVal);
-			
-		}
+		// }
+		// else {
+		// }
 
 
 		// echopre($retVal);die;
@@ -39,18 +37,15 @@ class C_Dashboard extends CI_Controller
 
 	function getCategory_City()
 	{
-		$this->load->model('m_doctor');
+		$city = array();
 		$city = $this->m_doctor->getCategory_City();
-		return $city;
-		
+		return $city;	
 	}
 
 	function getCategory_Spesialis()
 	{
-		$this->load->model('m_doctor');
 		$spesialis = $this->m_doctor->getCategory_Spesialis();
-		return $spesialis;
-		
+		return $spesialis;	
 	}
 }
  ?>

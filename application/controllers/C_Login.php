@@ -22,7 +22,7 @@ class C_Login extends CI_Controller {
 			$retVal['status'] = false;
 			$retVal['message'] = $retuser['txtInfo'];
 			$this->load->view('login/v_login', $retVal);
-			return $retVal;
+			// return $retVal;
 			exit();
 		}
 
@@ -33,9 +33,10 @@ class C_Login extends CI_Controller {
 							"user_username" =>  $retuser['txtUsername'],
 							"user_language" => "ID",
 							);
+			// echopre($redirect_url);die;
+			$user_data = $this->session->set_userdata($arrSession);
+			// $this->load->view('c_dashboard');
 			$redirect_url = base_url()."c_dashboard";
-			///echopre($redirect_url);die;
-			$this->session->set_userdata($arrSession);
 			redirect($redirect_url);
 		}
 	}
