@@ -64,21 +64,21 @@
 </head>
 <body>
 		<!-- Sidebar/menu -->
-	<nav class="w3-sidebar w3-collapse w3-orange w3-animate-left" style="z-index:3;width:300px;" id="mySide"><br>
+	<!-- <nav class="w3-sidebar w3-collapse w3-orange w3-animate-left" style="z-index:3;width:300px;" id="mySide"><br>
 		<div class="w3-container w3-center">
 			<a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-tiny w3-padding w3-hover-amber" title="close menu">
 				<i class="fa fa-remove"></i>
 			</a>
-	    	<img src="<?php echo base_url() ?>assets/img/logoBEM.png" style="width:60%;" class="w3-round"><br><br>
 			<h4><b>BEM FILKOM</b></h4>
 			<p class="w3-text-white"><b><i>Badan Eksekutif Mahasiswa</i></b></p>
 		</div>
 		<div class="w3-bar-block">
-			<a href="" class="w3-bar-item w3-button w3-hover-amber w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i><?php echo $this->session->userdata('akunAktif')->nama?></a> 
-			<a href="" class="w3-bar-item w3-button w3-hover-amber w3-padding"><i class="fa fa-INFO-CIRCLE fa-fw w3-margin-right"></i><?php echo $this->session->userdata('akunAktif')->jabatan?></a>
-			<a href="<?php echo base_url("C_Akun/logout") ?>" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-amber w3-padding"><i class="fa fa-sign-out fa-fw w3-margin-right"></i>LOGOUT</a>
+			<a href="" class="w3-bar-item w3-button w3-hover-amber w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i><?php //echo $this->session->//userdata('akunAktif')->nama?></a> 
+			<a href="" class="w3-bar-item w3-button w3-hover-amber w3-padding"><i class="fa fa-INFO-CIRCLE fa-fw w3-margin-right"></i><?php //echo $this->session->userdata('akunAktif')->jabatan?></a>
+			<a href="<?php //echo base_url("C_Akun/logout") ?>" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-amber w3-padding"><i class="fa fa-sign-out fa-fw w3-margin-right"></i>LOGOUT</a>
 		</div>
-	</nav>
+	</nav> -->
+
 		<div class="container-fluid">
 			<div class="col-md-3">
 				<form method="POST" action="<?php echo base_url('c_dashboard') ?>">

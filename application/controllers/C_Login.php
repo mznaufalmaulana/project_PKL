@@ -12,7 +12,7 @@ class C_Login extends CI_Controller {
 		if(count($retVal) < 1){
 			$retVal['status'] = false;
 			$retVal['message'] = "Internet Gagal";
-			echo $retVal;
+			echopre($retVal);die;
 			return $retVal;
 			exit();
 		}
