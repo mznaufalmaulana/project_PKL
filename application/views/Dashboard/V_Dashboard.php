@@ -52,7 +52,7 @@
 			width: 100%;
 			border: none;
 			outline: none;
-			border-radius: 20px;
+			border-radius: 5px;
 			height: 40px;
 			background-color: #37b60d;
 			color: white;
@@ -122,7 +122,7 @@
 									echo "<img src=\" ". $value['imgAvatar'] ."\">";
 								echo "</td>";
 								echo "<td>";
-									echo "<h3>".$value['txtNamaDokter']."</h3><br/>";
+									echo "<h3><b>".$value['txtNamaDokter']."</b></h3>";
 									echo $value['txtNoHP']."<br/>";
 									echo $value['txtAlamat']."<br/>";
 									echo $value['txtProvinsi']."<br/>";
@@ -135,60 +135,5 @@
 				?>
 			</div>
 		</div>
-
-		<script type="text/javascript">
-			// function getCategoryCity(){
-			// 	$.ajax({
-			// 		type: "POST"
-			// 		url: "<?php //echo base_url('C_Dashboard/getCategory')?>",
-			// 		dataType: "json",
-			// 		success: function(city){
-			// 			parsedobj = JSON.parse(result)
-			// 			var appendata;
-			// 			$.each(parsedobj.city, function(index, value){
-			// 				appenddata += "<option value = '" + index + " '>" + value.region + " </option>";
-			// 			})
-			// 			$('#catCity').html(appenddata);
-			// 		}
-			// 	})
-			// }
-			// function detCategorySpesialis(){
-
-			// }
-
-
-			// $.ajax({
-			// 	type: "POST",
-			// 	url: "<?php //echo base_url('C_Dashboard/getCategory')?>",
-			// 	dataType: "json",
-			// 	success: function(city){
-				// var select = document.getElementById("catCity");
-				// for (var i = 0; i < city.length; i++) {
-					// var c = document.createElement("option");
-					// c.text = citi[i].txtKota;
-					// select.options.add(c, 1);
-			// 		console.log(city);
-			// 		document.write("gusna")
-			// 	};
-
-			// });
-			// document.write("ygvygbnubv");
-			// success: function(result){
-   //                   parsedobj = JSON.parse(result)
-   //                   var appenddata='';
-   //                      $.each(parsedobj.city, function(index, value) 
-   //                      {
-   //                          appenddata += "<option value = '" + index + "'>" + value.city + " </option>";    
-   //                      });
-
-   //                      $('#catCity').html(appenddata); 
-   //              },
-   //              error: function(xhr, textStatus, error){
-   //                  console.log(xhr.statusText);
-   //                  console.log(textStatus);
-   //                  console.log(error);
-   //              }
-   //          });
-   		</script>
 </body>
 </html>

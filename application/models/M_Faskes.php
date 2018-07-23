@@ -7,8 +7,8 @@ class M_Faskes extends MY_Model
 	function ambilData($sp_name,$arrParams)
 	{
 		$retParameter = $this->soap_library->set_parameter($sp_name , $arrParams);
-    $retVal = $this->retrieveData($retParameter , "CallSpExcecution");
-    return $retVal;
+	    $retVal = $this->retrieveData($retParameter , "CallSpExcecution");
+	    return $retVal;
 	}
 	function get_filter_kota($idkota = 0,$txtkota = '')
 	{
@@ -25,15 +25,15 @@ class M_Faskes extends MY_Model
 		$sp_name = "User_getKlinik";
 		return $this->ambilData($sp_name,$arrParams);
 	}
-  function get_data_faskes($keywords = '',$kota = 0,$klinik = 0,$jenis = 0)
-  {
-    $arrParams['txtKeywords'] = $keywords;
-    $arrParams['intIDKota'] = $kota;
-    $arrParams['intIDKlinik'] = $klinik;
-    $arrParams['intIDJenisJamKes'] = $jenis;
-    $sp_name = "User_SearchFaskes";
+	function get_data_faskes($keywords = '',$kota = 0,$klinik = 0,$jenis = 0)
+	{
+		$arrParams['txtKeywords'] = $keywords;
+	    $arrParams['intIDKota'] = $kota;
+	    $arrParams['intIDKlinik'] = $klinik;
+	    $arrParams['intIDJenisJamKes'] = $jenis;
+	    $sp_name = "User_SearchFaskes";
 		return $this->ambilData($sp_name,$arrParams);
-  }
+	}
 	function get_list_layanan($id)
 	{
 		$arrParams['intIDPartner'] = $id;
@@ -45,6 +45,15 @@ class M_Faskes extends MY_Model
 		$arrParams['intIDPartner'] = $id;
 		$sp_name = "User_getListAvailableJamkesInPartner";
 		return $this->ambilData($sp_name,$arrParams);
+	}
+	function get_Jamkes()
+	{
+		$sp_name = "User_getJamkes";
+        $arrPost = array();
+		$retParameter = $this->soap_library->set_parameter($sp_name , $arrPost);
+		$retVal = $this->retrieveData($retParameter , "CallSpExcecution");
+	  	// echopre($retVal);die;
+		return $retVal;
 	}
 }
  ?>

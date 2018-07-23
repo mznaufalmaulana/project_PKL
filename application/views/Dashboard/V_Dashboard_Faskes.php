@@ -52,7 +52,7 @@
 			width: 100%;
 			border: none;
 			outline: none;
-			border-radius: 20px;
+			border-radius: 5px;
 			height: 40px;
 			background-color: #37b60d;
 			color: white;
@@ -105,11 +105,13 @@
 						</select>
 
 						<h3>Jaminan Kesehatan</h3>
-							<input type="checkbox" name="jk" value="0">BPJS Kesehatan<br>
-							<input type="checkbox" name="jk" value="1">Askes<br>
-							<input type="checkbox" name="jk" value="2">Axa<br>
-							<input type="checkbox" name="jk" value="3">Prudential<br><br>
-					<button type="submit" id="btnSubmit">Cari</button>
+							<?php 
+								foreach ($faskes_jamkes as $key => $value) {
+									echo "<input type=\"checkbox\" name=\"jamkes\" value=\"".$value['intIDJenisJamKes']."\"> ".$value['txtJenisJamKes']."<br>";
+								}
+							 ?>
+					<br>
+					<button type="submit" id="btnSubmitFilter">Cari</button>
 				</form>
 			</div>
 			<div class="col-md-9">
