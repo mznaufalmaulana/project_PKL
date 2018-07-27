@@ -71,7 +71,7 @@
               echo "<tr>";
                 echo "<td>";
                   if (is_null($value['imgAvatar'])) {
-                    echo "<img class=\" img-circle\" src=\" ". BASE_THEME. '/img/img1.jpg' ." \">";
+                    echo "<img class=\" img-circle\" src=\" ". BASE_THEME. '/img/user_default.png' ." \">";
                   }
                   else {
                     echo "<img class=\" img-circle\" src=\" ". $value['imgAvatar'] ."\">";

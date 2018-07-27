@@ -3,7 +3,7 @@
       <div class="am-header-left">
         <a id="naviconLeft" href="" class="am-navicon d-none d-lg-flex"><i class="icon ion-navicon-round"></i></a>
         <a id="naviconLeftMobile" href="" class="am-navicon d-lg-none"><i class="icon ion-navicon-round"></i></a>
-        <a href="index.html" class="am-logo">medique</a>
+        <a href="<?php echo base_url('c_dashboard'); ?>" class="am-logo">medique</a>
       </div><!-- am-header-left -->
 
       <!-- Bagian Profil -->
@@ -47,7 +47,7 @@
         <div id="mainMenu" class="tab-pane active">
           <ul class="nav am-sideleft-menu">
             <li class="nav-item">
-              <a href="index.html" class="nav-link">
+              <a href="<?php echo base_url('c_dashboard'); ?>" class="nav-link">
                 <i class="icon ion-ios-home-outline"></i>
                 <span>Dashboard</span>
               </a>
