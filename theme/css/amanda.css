@@ -19,6 +19,12 @@
  * Copyright 2011-2017 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+.profil_img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
 @media print {
   *,
   *::before,
