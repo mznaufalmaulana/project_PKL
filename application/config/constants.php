@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 define('HOST_URL', "http://localhost/");    
 define('BASE_URL', "http://localhost/project_PKL/");
 define('API_URL', "http://api.emedica.co.id:81/ApiEmedicaPublic/eMedicaAPI.asmx?WSDL");
+define('BASE_THEME', "http://localhost/project_PKL/theme/");
 
 
 /*

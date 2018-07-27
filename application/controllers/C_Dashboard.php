@@ -22,7 +22,12 @@ class C_Dashboard extends CI_Controller
 		$retVal ['data_dokter'] = $this->m_doctor->show_doctor($dt);
 		$retVal ['data_kota']= $this->m_doctor->getCategory_City();
 		$retVal ['data_spesialis']= $this->m_doctor->getCategory_Spesialis();
-		$this->load->view('Dashboard/V_Dashboard', $retVal);
+
+		if (is_null($retVal['data_dokter']['imgAvatar']))
+		{
+			$retVal['data_dokter']['imgAvatar'] = '<img src="echo base_url("/theme/img/user_default.png")"';
+		}
+		$this->load->view('Dashboard/content', $retVal);
 	}
 }
  ?>
