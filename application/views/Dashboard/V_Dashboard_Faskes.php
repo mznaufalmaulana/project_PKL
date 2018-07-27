@@ -99,15 +99,15 @@
 						<option value="0" disabled selected>Pilih Klinik</option>
 						<?php
 							for ($i = 0; $i < count($faskes_klinik); $i++){
-								echo "<option value=\"".$faskes_klinik[$i]['indtIDJenisPelayanan']."\">".$faskes_klinik[$i]['txtJenisPelayanan']."</option>";
+								echo "<option value=\"".$faskes_klinik[$i]['intIDJenisPelayanan']."\">".$faskes_klinik[$i]['txtJenisPelayanan']."</option>";
 							}
 						?>
 						</select>
 
 						<h3>Jaminan Kesehatan</h3>
-							<?php 
-								foreach ($faskes_jamkes as $key => $value) {
-									echo "<input type=\"checkbox\" name=\"jamkes\" value=\"".$value['intIDJenisJamKes']."\"> ".$value['txtJenisJamKes']."<br>";
+							<?php
+								for ($i = 0; $i < count($faskes_jamkes); $i++){
+									echo "<input type=\"checkbox\" name=\"jamkes[]\" value=\"".$faskes_jamkes[$i]['intIDJenisJamKes']."\">".$faskes_jamkes[$i]['txtJenisJamKes']."<br>";
 								}
 							 ?>
 					<br>
