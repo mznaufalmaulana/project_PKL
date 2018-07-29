@@ -91,7 +91,7 @@
 							for ($i = 0; $i < count($faskes_kota); $i++){
 								echo "<option value=\"".$faskes_kota[$i]['intIDKota']."\">".$faskes_kota[$i]['txtKota']."</option>";
 							}
-							 ?>
+						?>
 						</select>
 
 					<h3>Klinik</h3>

@@ -10,24 +10,32 @@ class C_Register extends CI_Controller
 
 	function index()
 	{
-		$this->load->view('register/v_register');
+		$res = "";
+        if(isset($_POST['submit'])){
+            $res = $this->insert_data();
+        }
+
+        $dt["alert"] = $res;
+		$this->load->view("register/content" , $dt);
 	}
 	function insert_data()
 	{
-		// if ($condition == true) {
-	
-		// }
-		// else {
-
-		// }
-		$arrPost['txtFullName'] = $this->input->post("fname");
+		$arrPost['txtFullName'] = $this->input->post("namaDepan").' '.$this->input->post("namaBelakang");
 		$arrPost['txtEmail'] = $this->input->post("email");
 		$arrPost['txtUsername'] = $this->input->post("uname");
 		$arrPost['txtPassword'] = $this->input->post("pass");
 		$this->load->model('m_user');
 		$retVal = $this->m_user->insert_user($arrPost);
-		// echopre($retVal);die;
-		redirect(base_url());
+		echopre($retVal);die;
+
+		$retuser = $retVal[0];
+		if ($retuser['bitSuccess']==0) {
+			$retVal['status'] = false;
+			$retVal['message'] = $retuser['txtInfo'];
+			return $retVal;
+			exit();
+		}
+		// redirect(base_url());
 	}
 	function cek_password()
 	{

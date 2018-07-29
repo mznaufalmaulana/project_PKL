@@ -17,7 +17,7 @@
 
                 <!-- Pilih Spesialis -->
                 <div class="form-group">
-                  <label for="contact-name" class="col-lg-2 control-label">Pilih Kota</label>
+                  <label for="contact-name" class="col-lg-2 control-label">Pilih Spesialis</label>
 
                   <div class="col-lg-8">
                     <select class="form-control" id="catSpesialis" name="spesialis">

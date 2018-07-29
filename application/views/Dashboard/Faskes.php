@@ -7,10 +7,10 @@
                     <select class="form-control" id="faskk" name="faskota">
                       <option value="0" disabled selected>Pilih Kota</option>
                       <?php
-                        foreach ($data_kota as $key => $value) {
-                          echo "<option value=\"".$value['intIDKota']."\">".$value['txtKota']."</option>";
+                        for ($i = 0; $i < count($faskes_kota); $i++){
+                          echo "<option value=\"".$faskes_kota[$i]['intIDKota']."\">".$faskes_kota[$i]['txtKota']."</option>";
                         }
-                       ?>
+                      ?>
                     </select>
                   </div>
                 </div> <!-- Akhir form kota -->
@@ -26,7 +26,7 @@
                         for ($i = 0; $i < count($faskes_klinik); $i++){
                           echo "<option value=\"".$faskes_klinik[$i]['intIDJenisPelayanan']."\">".$faskes_klinik[$i]['txtJenisPelayanan']."</option>";
                         }
-                       ?>
+                      ?>
                     </select>
                   </div>
                 </div> <!-- Akhir form klinik -->
@@ -74,7 +74,7 @@ for ($i = 0; $i < count($data_faskes); $i++){
           }
         }
       echo "</td>";
-    echo "</tr>";
+    echo "</tr><hr>";
   echo "</table>";
   }
 ?>

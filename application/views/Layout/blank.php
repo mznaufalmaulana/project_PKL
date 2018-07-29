@@ -20,6 +20,7 @@
     </div><!-- am-mainpanel -->
 
     <?php
+      $this->load->view('layout/footer');
       $this->load->view('layout/jshandler');
     ?>
 

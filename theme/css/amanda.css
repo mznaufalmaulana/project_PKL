@@ -19,10 +19,9 @@
  * Copyright 2011-2017 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-.profil_img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+img .logo_awal {
+  width: 10px;
+  height: 10px;
 }
 
 @media print {
@@ -3046,7 +3045,7 @@ tbody.collapse.show {
 
 .tab-content > .tab-pane {
   display: none;
-  padding: 20px;
+  padding: 0px;
 }
 .tab-content > .active {
   display: block;
