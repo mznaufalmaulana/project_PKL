@@ -8,6 +8,18 @@
   </head>
 
   <body>
+    <?php 
+      if ($status==false) {
+    ?>
+    <div class="alert alert-danger mg-b-0" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      <strong class="d-block d-sm-inline-block-force">Oh Sorry!</strong> <?php echo $message ?>
+    </div><!-- alert -->
+    <?php
+      }
+     ?>
     <div class="am-signin-wrapper">
       <div class="am-signin-box">
         <div class="row no-gutters">
@@ -19,15 +31,15 @@
           <div class="col-lg-7">
             <h5 class="tx-gray-800 mg-b-25">Masuk ke Akun Anda</h5>
 
-            <form method="POST" action="<?php echo base_url('c_login')?>">
+            <form method="POST" action="#">
               <div class="form-group">
                 <label class="form-control-label">Username</label>
-                <input type="text" name="uname" class="form-control" placeholder="Masukkan Username Anda">
+                <input type="text" name="uname" class="form-control" placeholder="Masukkan Username Anda" required>
               </div><!-- form-group -->
 
               <div class="form-group">
                 <label class="form-control-label">Kata Sandi</label>
-                <input type="password" name="pass" class="form-control" placeholder="Masukkan Password Anda">
+                <input type="password" name="pass" class="form-control" placeholder="Masukkan Password Anda" required>
               </div><!-- form-group -->
               <p>Belum memiliki Akun? <a href="<?php echo base_url('c_register')?>">Daftar Sekarang</a></p>
               <button type="submit" name="submit" class="btn btn-block">Masuk</button>

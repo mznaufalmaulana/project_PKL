@@ -6,6 +6,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 class C_Dashboard extends CI_Controller
 {
+	var $meta_title = "Medique - Dashboard";
+    var $meta_desc = "Dashboard";
+	var $main_title = "Dashboard";
+    var $base_url = "";
+	var $base_url_pasien = "";
+	var $limit = "";
+
 	public function __construct()
 	{
 		parent::__construct();

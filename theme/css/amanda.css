@@ -19,10 +19,6 @@
  * Copyright 2011-2017 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-img .logo_awal {
-  width: 10px;
-  height: 10px;
-}
 
 @media print {
   *,

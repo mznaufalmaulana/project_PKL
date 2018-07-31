@@ -15,28 +15,9 @@
       <div class="am-pagebody">
 
         <!-- your content goes here -->
-        <div class="card bd-1"> <!-- Awal halaman -->
-          <!-- Profil Dokter -->
-          <h3>Data Dokter</h3>
-          
-          <!-- Data Dokter -->
-          <table class="table table-striped" id="jadwalDokter">
-            <thead>
-              <tr>
-                  <th>Lokasi Praktek</th>
-                  <th>Jenis Pelayanan</th>
-                  <th>Jam Pelayanan</th>
-                  <th>Antrian</th>
-                  <th>Kuota</th>
-                  <th></th>
-              </tr>
-            </thead>
-            <tbody id="show_data">
-              
-            </tbody>
-          </table>
-          
-        </div>
+        <?php 
+          $this->load->view('detail/v_dokter');
+         ?>
 
       </div><!-- am-pagebody -->
     </div><!-- am-mainpanel -->

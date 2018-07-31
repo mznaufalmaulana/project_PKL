@@ -30,6 +30,7 @@
           <div class="tab-content">
             <!-- Laman Dokter -->
             <div id="dokter" class="tab-pane active"> 
+              <br>
               <?php
                 $this->load->view('dashboard/dokter.php');
               ?>
@@ -37,6 +38,7 @@
 
             <!-- Laman Faskes -->
             <div id="faskes" class="tab-pane">
+              <br>
               <?php
                 $this->load->view('dashboard/faskes.php');
               ?>

@@ -12,6 +12,13 @@ class C_Detail extends CI_Controller {
 	{
 		$this->load->view('detail/content');
 	}
+	public function get_detail()
+	{
+		$id['id'] = $this->input->get('idDokter');
+		$this->load->model('M_Detail');
+		$data['data'] = $this->M_Detail->get_detail($id);
+		$this->load->view('detail/content', $data);
+	}
 
 }
 

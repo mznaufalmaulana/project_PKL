@@ -44,49 +44,62 @@
 
                 <div class="form-group">
                   <div class="col-lg-10 col-lg-offset-2">
-                    <button type="done" class="btn btn-primary" id="btnSubmit" onclick="viewDokter()">Sorting</button>
+                    <button type="done" class="btn btn-primary" id="btnSubmit"">Sorting</button>
                   </div>
                 </div> <!-- Akhir Tombol -->
             </form>
 
-            <!-- <div class="row">
-              <table class="table table-striped" id="dataDokter">
-                <thead>
-                <tr>
-                    <th>Kode</th>
-                    <th>Nama Barang</th>
-                    <th>Harga</th>
-                </tr>
-            </thead>
-                <tbody id="show_data">
-                  
-                </tbody>
-              </table>
-            </div> -->
+        <?php 
+          // foreach ($data_dokter as $key => $value)
+          // {
+          //   echo "<table border=\"0\">";
+          //     echo "<tr>";
+          //       echo "<td>";
+          //         if (is_null($value['imgAvatar'])) {
+          //           echo "<img class=\"wd-200 img-circle\" src=\" ". BASE_THEME. '/img/user_default.png' ." \">";
+          //         }
+          //         else {
+          //           echo "<img class=\"wd-200 img-circle\" src=\" ". $value['imgAvatar'] ."\">";
+          //         }
+          //       echo "</td>";
+          //       echo "<td>";
+          //         echo "<h3><b><a href=\"". base_url('c_detail/get_detail')."?idDokter=".$value['intIDDokter']; "\">".$value['txtNamaDokter']."</a></b></h3>";
+          //         echo $value['txtNoHP']."<br/>";
+          //         echo $value['txtAlamat']."<br/>";
+          //         echo $value['txtProvinsi']."<br/>";
+          //         echo $value['txtKota']."<br/>";
+          //         echo $value['txtSpesialis']."<br/>";
+          //       echo "</td>";
+          //     echo "</tr>";
+          //   echo "</table>";
+          // }
+        ?>
 
         <?php 
-          foreach ($data_dokter as $key => $value)
-          {
-            echo "<table border=\"0\">";
-              echo "<tr>";
-                echo "<td>";
-                  if (is_null($value['imgAvatar'])) {
-                    echo "<img class=\" img-circle\" src=\" ". BASE_THEME. '/img/user_default.png' ." \">";
-                  }
-                  else {
-                    echo "<img class=\" img-circle\" src=\" ". $value['imgAvatar'] ."\">";
-                  }
-                echo "</td>";
-                echo "<td>";
-                  echo "<h3><b>".$value['txtNamaDokter']."</b></h3>";
-                  echo $value['txtNoHP']."<br/>";
-                  echo $value['txtAlamat']."<br/>";
-                  echo $value['txtProvinsi']."<br/>";
-                  echo $value['txtKota']."<br/>";
-                  echo $value['txtSpesialis']."<br/>";
-                echo "</td>";
-              echo "</tr>";
-            echo "</table>";
+          foreach ($data_dokter as $key => $value) {
+        ?>
+          <div class="card">
+            <div class="card-body">
+              <table border="0">
+                <tr>
+                  <td>
+                    <img class="wd-200" src="<?php BASE_THEME.'/img/user_default.png'?>">
+                  </td>
+                  <td>
+                  <h5 class="card-title"><a href="<?php echo base_url('c_detail/get_detail').'?idDokter='.$value['intIDDokter']; ?>""> <?php echo $value['txtNamaDokter'];?> </a></h5>
+                  <p class="card-text">
+                    <?php echo $value['txtNoHP'];?> <br>
+                    <?php echo $value['txtAlamat'];?> <br>
+                    <?php echo $value['txtProvinsi'];?> <br>
+                    <?php echo $value['txtKota'];?> <br>
+                    <?php echo $value['txtSpesialis'];?> <br>
+                  </p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div><!-- card -->
+        <?php
           }
         ?>
 
@@ -100,7 +113,7 @@
           //     function tampil_data_barang(){
           //         $.ajax({
           //             type  : 'ajax',
-          //             url   : '<?php echo base_url()?>/c_dashboard/viewDokter',
+          //             url   : '<?php //echo base_url()?>/c_dashboard/viewDokter',
           //             async : false,
           //             dataType : 'json',
           //             success : function(data){

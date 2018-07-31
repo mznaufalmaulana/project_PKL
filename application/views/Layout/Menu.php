@@ -3,11 +3,22 @@
       <div class="am-header-left">
         <a id="naviconLeft" href="" class="am-navicon d-none d-lg-flex"><i class="icon ion-navicon-round"></i></a>
         <a id="naviconLeftMobile" href="" class="am-navicon d-lg-none"><i class="icon ion-navicon-round"></i></a>
-        <a href="<?php echo base_url('c_dashboard'); ?>" class="am-logo">medique</a>
+        <a href="<?php echo base_url('c_dashboard'); ?>" class="am-logo">
+          <img src="<?php echo BASE_THEME.'/img/logo_atas.png' ?>" class="wd-100">
+        </a>
       </div><!-- am-header-left -->
 
       <!-- Bagian Profil -->
       <div class="am-header-right">
+        <?php 
+          $isLogin = $this->session->userdata('intIDPartner');
+          if (!isset($isLogin)) 
+            { ?>
+            
+              <a href="<?php echo base_url('c_login') ?>" class="btn btn-orange">Login</a>
+        <?php 
+            } else { ?>
+
         <div class="dropdown dropdown-profile">
           <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
             <img src="<?php echo BASE_THEME.'/img/img3.jpg' ?>" class="wd-32 rounded-circle" alt="">
@@ -20,6 +31,8 @@
             </ul>
           </div><!-- dropdown-menu -->
         </div><!-- dropdown -->
+
+        <?php } ?>
       </div><!-- am-header-right -->
     </div><!-- am-header -->
 

@@ -5,9 +5,24 @@
       $this->load->view('layout/header');
       $this->load->view('layout/csshandler');
     ?>
+    
   </head>
 
   <body>
+    <!-- alert -->
+    <?php 
+      if ($status==false) {
+    ?>
+    <div class="alert alert-danger mg-b-0" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      <strong class="d-block d-sm-inline-block-force">Oh Sorry!</strong> <?php echo $message ?>
+    </div><!-- alert -->
+    <?php
+      }
+     ?>
+
     <div class="am-signup-wrapper">
       <div class="am-signup-box">
         <div class="row no-gutters">
@@ -19,43 +34,43 @@
           <div class="col-lg-7">
             <h5 class="tx-gray-800 mg-b-25">Daftarkan Akun Anda</h5>
 
-            <form method="POST" action="<?php echo base_url('c_register')?>">
+            <form method="POST" action="#">
               <div class="form-group">
                 <label class="form-control-label">Email:</label>
-                <input type="email" name="email" class="form-control" placeholder="Masukkan Alamat Email Anda">
+                <input type="email" name="email" class="form-control" placeholder="Masukkan Alamat Email Anda" required>
               </div><!-- form-group -->
 
               <div class="row row-xs">
                 <div class="col">
                   <div class="form-group">
                     <label class="form-control-label">Nama Depan:</label>
-                    <input type="text" name="namaDepan" class="form-control" placeholder="Masukkan Nama Depan Anda">
+                    <input type="text" name="namaDepan" class="form-control" placeholder="Masukkan Nama Depan Anda" required>
                   </div><!-- form-group -->
                 </div><!-- col -->
                 <div class="col">
                   <div class="form-group">
                     <label class="form-control-label">Nama Belakang:</label>
-                    <input type="text" name="namaBelakang" class="form-control" placeholder="Masukkan Nama Belakang Anda">
+                    <input type="text" name="namaBelakang" class="form-control" placeholder="Masukkan Nama Belakang Anda" required>
                   </div><!-- form-group -->
                 </div><!-- col -->
               </div><!-- row -->
 
               <div class="form-group">
                 <label class="form-control-label">Username:</label>
-                <input type="text" name="uname" class="form-control" placeholder="Masukkan Username">
+                <input type="text" name="uname" class="form-control" placeholder="Masukkan Username" required>
               </div><!-- form-group -->
 
               <div class="row row-xs">
                 <div class="col">
                   <div class="form-group">
                     <label class="form-control-label">Kata Sandi:</label>
-                    <input type="password" name="pass" class="form-control" placeholder="Masukkan Kata Sandi">
+                    <input type="password" name="pass" class="form-control" placeholder="Masukkan Kata Sandi" required>
                   </div><!-- form-group -->
                 </div><!-- col -->
                 <div class="col">
                   <div class="form-group">
                     <label class="form-control-label">Konfirmasi Kata Sandi:</label>
-                    <input type="password" name="conPass" class="form-control" placeholder="Konfirmasi Kata Sandi">
+                    <input type="password" name="conPass" class="form-control" placeholder="Konfirmasi Kata Sandi" required>
                   </div><!-- form-group -->
                 </div><!-- col -->
               </div><!-- row -->
@@ -63,7 +78,7 @@
 
               <p>Sudah Memiliki Akun? <a href="<?php echo base_url('c_login')?>">Masuk Disini</a></p>
 
-              <button type="submit" name="submit " class="btn btn-block pd-x-20" data-toggle="modal" data-target="#modal">Daftar</button>
+              <button type="submit" name="submit" class="btn btn-block pd-x-20">Daftar</button>
             </form>
           </div><!-- col-7 -->
         </div><!-- row -->
@@ -75,16 +90,6 @@
       </div><!-- signin-box -->
     </div><!-- am-signin-wrapper -->
 
-    <!-- alert -->
-    <div class="alert alert-danger mg-b-0" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <div class="d-flex align-items-center justify-content-start">
-          <i class="icon ion-ios-close alert-icon tx-24"></i>
-        <span><strong>Oh snap!</strong> Error alert message.</span>
-      </div><!-- d-flex -->
-    </div><!-- alert -->
     <?php
       $this->load->view('layout/jshandler');
     ?>

@@ -24,9 +24,8 @@ class C_Login extends CI_Controller {
 			if($retuser['bitSuccess']==0){
 				$retVal['status'] = false;
 				$retVal['message'] = $retuser['txtInfo'];
-				$this->load->view('login/v_login', $retVal);
-				// return $retVal;
-				exit();
+				$this->load->view('Login/Content', $retVal);
+
 			}
 
 			else {
@@ -45,12 +44,14 @@ class C_Login extends CI_Controller {
 		}
 		else
 		{
-			$this->load->view('login/content');
+			$retVal['status'] = true;
+			$this->load->view('login/content', $retVal);
 		}
 	}
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect("/");
+		$redirect_url = base_url()."c_dashboard";
+		redirect($redirect_url);
 	}
 }

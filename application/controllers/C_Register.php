@@ -10,13 +10,14 @@ class C_Register extends CI_Controller
 
 	function index()
 	{
-		$res = "";
+		
         if(isset($_POST['submit'])){
-            $res = $this->insert_data();
+        	$this->insert_data();
         }
-
-        $dt["alert"] = $res;
-		$this->load->view("register/content" , $dt);
+        else {
+        	$retVal['status'] = true;
+			$this->load->view("register/content", $retVal);
+        }
 	}
 	function insert_data()
 	{
@@ -26,14 +27,16 @@ class C_Register extends CI_Controller
 		$arrPost['txtPassword'] = $this->input->post("pass");
 		$this->load->model('m_user');
 		$retVal = $this->m_user->insert_user($arrPost);
-		echopre($retVal);die;
+		// echopre($retVal);die;
 
 		$retuser = $retVal[0];
 		if ($retuser['bitSuccess']==0) {
 			$retVal['status'] = false;
 			$retVal['message'] = $retuser['txtInfo'];
-			return $retVal;
-			exit();
+            $this->load->view("register/content" , $retVal);
+		}
+		else {
+			redirect(base_url('c_login'));
 		}
 		// redirect(base_url());
 	}
