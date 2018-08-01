@@ -14,15 +14,19 @@
           $isLogin = $this->session->userdata('intIDPartner');
           if (!isset($isLogin)) 
             { ?>
-            
               <a href="<?php echo base_url('c_login') ?>" class="btn btn-orange">Login</a>
         <?php 
             } else { ?>
 
         <div class="dropdown dropdown-profile">
           <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-            <img src="<?php echo BASE_THEME.'/img/img3.jpg' ?>" class="wd-32 rounded-circle" alt="">
-            <span class="logged-name"><span class="hidden-xs-down">Jane Doe</span> <i class="fa fa-angle-down mg-l-3"></i></span>
+            <img src="<?php echo BASE_THEME.'/img/user_default.png' ?>" class="wd-32 rounded-circle" alt="">
+            <span class="logged-name">
+              <span class="hidden-xs-down">
+                <?php echo $this->session->userdata('user_username'); ?>
+              </span> 
+              <i class="fa fa-angle-down mg-l-3"></i>
+            </span>
           </a>
           <div class="dropdown-menu wd-200">
             <ul class="list-unstyled user-profile-nav">

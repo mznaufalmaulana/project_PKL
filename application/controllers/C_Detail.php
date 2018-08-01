@@ -6,18 +6,70 @@ class C_Detail extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('M_Detail');
+		$this->load->model('m_detail');
 	}
+
 	public function index()
 	{
-		$this->load->view('detail/content');
-	}
-	public function get_detail()
-	{
+		$dateSelection = date('Y-m-d');
+		$date_input = $this->input->post("txtDate");
+
+		$dt['intIDDokter'] = $this->input->get('idDokter');
+		$dt['intDay'] = date('w', strtotime($dateSelection)) + 1;
+		$dt['dtAntrian'] = $date_input ."00:00:00";
+
 		$id['id'] = $this->input->get('idDokter');
-		$this->load->model('M_Detail');
-		$data['data'] = $this->M_Detail->get_detail($id);
-		$this->load->view('detail/content', $data);
+		$retVal['data'] = $this->m_detail->get_detail($id);
+		$retVal['jadwal'] = $this->m_detail->get_detail_jadwal($dt);
+		$this->load->view('detail/content', $retVal);
+	}
+
+	public function get_data_selection()
+	{
+		if (isset($_POST['dateSelection'])) {
+			$output = "";
+			$dt = array(
+					"intIDDokter" => $this->input->get('idDokter'),
+					"intDay" => "2",
+					"dtAntrian" => $_POST['dateSelection']."00:00:00"
+				);
+			$retVal = $this->m_detail->get_detail_jadwal($dt);
+			$output .= '
+				<table id="dataTable" class="table display responsive nowrap">
+					<thead>
+						<tr>
+							<th class="wd-25p">Lokasi Praktek</th>
+							<th class="wd-20p">Jenis Pelayanan</th>
+							<th class="wd-15p">Jam Pelayanan</th>
+							<th class="wd-25p">Antrian</th>
+							<th class="wd-15p">Kuota</th>
+							<th class="wd-10p"></th>
+						</tr>
+					</thead>
+			';
+			foreach ($retVal as $key => $value) {
+				$output .= '
+					<tbody>
+						<tr>
+							<td>'. $value['txtPartnerName']  .'</td>
+							<td>'. $value['txtJenisPelayanan'] .' </td>
+							<td>'. $value['dtJamMulai']. ' - ' .$value['dtJamSelesai'] .'</td>
+							<td>'. $value['intJumlahAntrian'] .' </td>
+							<td>'. $value['intKuota'] .' </td>
+							<td> <a href=" echo base_url(\'c_detail\').\'?idPartner=\''.$value['intIDPartner'].' Booking </a></td>
+						</tr>
+					</tbody>
+				';
+			}
+			$output .= '</table>';
+			echo $output;
+		}
+	}
+
+	public function get_data_jenis()
+	{
+		$dt['intIDPartner'] = $this->input->get('idPartner');
+		$retVal['dataPelayanan'] = $this->m_detail->get_data_jenis($dt);
 	}
 
 }

@@ -14,6 +14,7 @@ class M_User extends MY_Model
 		$retParameter = $this->soap_library->set_parameter($sp_name , $arrParams);
 		// memanggil API
         $retVal = $this->retrieveData($retParameter , "CallSpExcecution");
+        echopre($retVal);die;
         return $retVal;
 	}
 	function insert_user($arrPost)

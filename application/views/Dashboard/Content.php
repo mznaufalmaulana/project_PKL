@@ -27,7 +27,7 @@
             </ul>
           </div><!-- card-header -->
 
-          <div class="tab-content">
+          <div class="tab-content pd-20 pd-sm-40">
             <!-- Laman Dokter -->
             <div id="dokter" class="tab-pane active"> 
               <br>

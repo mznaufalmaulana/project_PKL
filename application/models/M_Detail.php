@@ -11,6 +11,22 @@ class M_Detail extends MY_Model {
 		// echopre($retVal);die;
 		return $retVal;
 	}
+	function get_detail_jadwal($dt)
+	{
+		$sp_name = "User_DokterGetJadwalPraktek";
+ 		$retParameter = $this->soap_library->set_parameter($sp_name , $dt);
+		$retVal = $this->retrieveData($retParameter , "CallSpExcecution");
+		// echopre($retVal);die;
+		return $retVal;
+	}
+	function get_data_jenis($dt)
+	{
+		$sp_name = "User_GetJenisLoketPelayanan";
+ 		$retParameter = $this->soap_library->set_parameter($sp_name , $dt);
+		$retVal = $this->retrieveData($retParameter , "CallSpExcecution");
+		echopre($retVal);die;
+		return $retVal;
+	}
 
 }
 

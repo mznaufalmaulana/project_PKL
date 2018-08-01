@@ -1,4 +1,4 @@
-<form action="<?php echo base_url('c_dashboard') ?>" class="form-horizontal" role="form" method="POST">
+            <form action="<?php echo base_url('c_dashboard') ?>" class="form-horizontal" role="form" method="POST">
                 <!-- pilih kota -->
                 <div class="form-group">
                   <label for="contact-name" class="col-lg-2 control-label">Pilih Kota</label>
@@ -83,10 +83,10 @@
               <table border="0">
                 <tr>
                   <td>
-                    <img class="wd-200" src="<?php BASE_THEME.'/img/user_default.png'?>">
+                    <img class="wd-200" src="<?php BASE_THEME.'img/user_default.png'?>">
                   </td>
                   <td>
-                  <h5 class="card-title"><a href="<?php echo base_url('c_detail/get_detail').'?idDokter='.$value['intIDDokter']; ?>""> <?php echo $value['txtNamaDokter'];?> </a></h5>
+                  <h5 class="card-title"><a href="<?php echo base_url('c_detail').'?idDokter='.$value['intIDDokter']; ?>""> <?php echo $value['txtNamaDokter'];?> </a></h5>
                   <p class="card-text">
                     <?php echo $value['txtNoHP'];?> <br>
                     <?php echo $value['txtAlamat'];?> <br>
