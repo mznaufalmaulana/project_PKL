@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_Detail extends CI_Controller {
+class C_Detail extends MY_Controller {
 
 	public function __construct()
 	{
@@ -65,6 +65,7 @@ class C_Detail extends CI_Controller {
 			}
 			$output .= '</table>';
 			echo $output;
+			// return $output;
 		}
 	}
 

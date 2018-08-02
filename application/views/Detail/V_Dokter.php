@@ -9,9 +9,11 @@
 	<p class="mg-b-20 mg-sm-b-30">Silahkan Tentukan Hari/Tanggal Yang Anda Inginkan</p>
 	<div class="wd-200">
 		<div class="input-group form-control-wrapper">
+				
 			<span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
 			<input type="search" id="dateSelection" name="dateSelection" class="form-control fc-datepicker" placeholder="YYYY/MM/DD">
 			<input class="btn btn-orange active" type="button" name="filter" id="filter" value="Cari">
+			
 		</div>
 	</div><!-- wd-200 -->
 	<br>
@@ -35,7 +37,7 @@
 					<td> <?php echo $value['dtJamMulai']. ' - ' .$value['dtJamSelesai'] ?> </td>
 					<td> <?php echo $value['intJumlahAntrian'] ?> </td>
 					<td> <?php echo $value['intKuota'] ?> </td>
-					<td> <a href="<?php echo base_url('c_detail/get_data_jenis').'?idPartner='.$value['intIDPartner']; ?>" data-toggle="modal" data-target="#pilihLoket"> Booking </a></td>
+					<td> <a id="loketPelayanan" href="<?php echo base_url('c_detail/get_data_jenis').'?idPartner='.$value['intIDPartner']; ?>" data-toggle="modal" data-target="#pilihLoket"> Booking </a></td>
 				</tr>
 			<?php  } ?>
 			</tbody>
@@ -54,13 +56,14 @@
 				</button>
 			</div>
 			<div class="modal-body pd-25">
-				<h4 class="lh-3 mg-b-20"><a href="" class="tx-inverse hover-primary">Silahkan Pilih Loket yang Akan Dituju</a></h4>
+				<h4 class="lh-3 mg-b-20">Silahkan Pilih Loket yang Akan Dituju</h4>
 				<?php foreach ($dataPelayanan as $key => $value) { ?>
-					<a href="<?php echo base_url('c_detail/get_data_jenis').'?idLoket='.$value['intIDLoket']; ?>" type="button" class="btn btn-info pd-x-25"><?php echo $value['txtLoket'] ?></a>
+					<a id="jenisLayanan" href="<?php echo base_url('c_detail/get_data_jenis').'?idLoket='.$value['intIDLoket']; ?>" type="button" class="btn btn-info pd-x-25">
+						<?php echo $value['txtLoket'] ?>	
+					</a>
 				<?php } ?>
 			</div>
 			<div class="modal-footer">
-				
 				<button type="button" class="btn btn-secondary pd-x-20" data-dismiss="modal">Close</button>
 			</div>
 		</div>

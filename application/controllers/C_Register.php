@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
 * 
 */
-class C_Register extends CI_Controller
+class C_Register extends MY_Controller
 {
 	var $condition = false;
 

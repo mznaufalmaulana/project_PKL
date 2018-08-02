@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
 *
 */
-class C_Dashboard_Faskes extends CI_Controller
+class C_Dashboard_Faskes extends MY_Controller
 {
 	public function __construct()
 	{

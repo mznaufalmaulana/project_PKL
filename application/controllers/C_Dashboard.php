@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
 *
 */
-class C_Dashboard extends CI_Controller
+class C_Dashboard extends MY_Controller
 {
 	var $meta_title = "Medique - Dashboard";
     var $meta_desc = "Dashboard";

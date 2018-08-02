@@ -25,6 +25,9 @@
     <?php
       $this->load->view('layout/jshandler');
     ?>
+    <?php 
+      $this->load->view('layout/footer');
+    ?>
 
     <script>
       $(document).ready(function(){
@@ -49,7 +52,11 @@
             numberOfMonths: 2
           });
         });
-        $(document)
+        // $(document).on("click","#filter", function(){
+
+        // })
+
+        //filtering
         $('#filter').click(function(){
           var dateSelection = $('dateSelection').val();
           if (dateSelection != '')
@@ -64,6 +71,15 @@
               }
             });
           }
+        });
+
+        //open modal
+        $(document).on("click", "#loketPelayanan", function () {
+            var myBookId = $(this).data('id');
+            $(".modal-body #jenisLayanan").val( myBookId );
+            // As pointed out in comments, 
+            // it is superfluous to have to manually call the modal.
+            // $('#addBookDialog').modal('show');
         });
       });
     </script>
