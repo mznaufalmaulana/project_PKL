@@ -24,7 +24,7 @@ class M_Detail extends MY_Model {
 		$sp_name = "User_GetJenisLoketPelayanan";
  		$retParameter = $this->soap_library->set_parameter($sp_name , $dt);
 		$retVal = $this->retrieveData($retParameter , "CallSpExcecution");
-		echopre($retVal);die;
+		// echopre($retVal);die;
 		return $retVal;
 	}
 

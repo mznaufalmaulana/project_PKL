@@ -49,7 +49,7 @@
             numberOfMonths: 2
           });
         });
-
+        $(document)
         $('#filter').click(function(){
           var dateSelection = $('dateSelection').val();
           if (dateSelection != '')
@@ -60,7 +60,7 @@
               data:{dateSelection:dateSelection},
               success:function(data)
               {
-                $('dataTable').html(data);
+                $('#dataTable').html(data);
               }
             });
           }

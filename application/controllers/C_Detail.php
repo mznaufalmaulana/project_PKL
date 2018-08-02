@@ -28,11 +28,13 @@ class C_Detail extends CI_Controller {
 	{
 		if (isset($_POST['dateSelection'])) {
 			$output = "";
-			$dt = array(
-					"intIDDokter" => $this->input->get('idDokter'),
-					"intDay" => "2",
-					"dtAntrian" => $_POST['dateSelection']."00:00:00"
-				);
+			$dateSelection = date('Y-m-d');
+			$date_input = $this->input->post("txtDate");
+
+			$dt['intIDDokter'] = $this->input->get('idDokter');
+			$dt['intDay'] = date('w', strtotime($dateSelection)) + 1;
+			$dt['dtAntrian'] = $date_input ."00:00:00";
+
 			$retVal = $this->m_detail->get_detail_jadwal($dt);
 			$output .= '
 				<table id="dataTable" class="table display responsive nowrap">
@@ -70,6 +72,7 @@ class C_Detail extends CI_Controller {
 	{
 		$dt['intIDPartner'] = $this->input->get('idPartner');
 		$retVal['dataPelayanan'] = $this->m_detail->get_data_jenis($dt);
+		$this->load->view('detail/content', $retVal);
 	}
 
 }
