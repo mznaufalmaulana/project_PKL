@@ -80,22 +80,24 @@
         ?>
           <div class="card">
             <div class="card-body">
-              <table border="0">
-                <tr>
-                  <td>
-                    <img class="wd-200" src="<?php BASE_THEME.'img/user_default.png'?>">
-                  </td>
-                  <td>
-                  <h5 class="card-title"><a href="<?php echo base_url('c_detail').'?idDokter='.$value['intIDDokter']; ?>""> <?php echo $value['txtNamaDokter'];?> </a></h5>
-                  <p class="card-text">
-                    <?php echo $value['txtNoHP'];?> <br>
-                    <?php echo $value['txtAlamat'];?> <br>
-                    <?php echo $value['txtProvinsi'];?> <br>
-                    <?php echo $value['txtKota'];?> <br>
-                    <?php echo $value['txtSpesialis'];?> <br>
-                  </p>
-                  </td>
-                </tr>
+              <table class="mg-b-0">
+                <tbody>
+                  <tr>
+                    <h5 class="card-title"><a href="<?php echo base_url('c_detail').'?idDokter='.$value['intIDDokter']; ?>""> <?php echo $value['txtNamaDokter'];?> </a></h5>
+                    <td>
+                      <img class="wd-150" src="<?php echo BASE_THEME.'img/user_default.png'?>">
+                    </td>
+                    <td style="padding-left: 10px;">
+                      <p class="card-text">
+                        <?php echo $value['txtNoHP'];?> <br>
+                        <?php echo $value['txtAlamat'];?> <br>
+                        <?php echo $value['txtProvinsi'];?> <br>
+                        <?php echo $value['txtKota'];?> <br>
+                        <?php echo $value['txtSpesialis'];?> <br>
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div><!-- card -->

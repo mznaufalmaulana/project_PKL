@@ -1,9 +1,22 @@
 <div class="card pd-20 pd-sm-40">
 	<?php foreach ($data as $key => $value) { ?>
-		
-	<h3 class="card-title">
-		<?php echo $value['txtNamaDokter'] ?>
-	</h3>
+	
+	<table class="mg-b-0">
+		<tbody>
+			<tr>
+				<td class="wd-15p">
+					<img class="wd-150" src="<?php echo BASE_THEME.'img/user_default.png'?>">
+				</td>
+				<td style="padding-left: 10px;">
+					<h3 class="card-title"><?php echo $value['txtNamaDokter'] ?></h3>
+					<p class="card-text">
+					<?php echo $value['txtProfile'];?> <br>
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
 
 	<?php } ?>
 	<p class="mg-b-20 mg-sm-b-30">Silahkan Tentukan Hari/Tanggal Yang Anda Inginkan</p>

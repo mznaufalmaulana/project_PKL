@@ -27,6 +27,14 @@ class M_Detail extends MY_Model {
 		// echopre($retVal);die;
 		return $retVal;
 	}
+	function booking_dokter($dt)
+	{
+		$sp_name = "User_GenerateNoAntrianFromApp";
+ 		$retParameter = $this->soap_library->set_parameter($sp_name , $dt);
+		$retVal = $this->retrieveData($retParameter , "CallSpExcecution");
+		// echopre($retVal);die;
+		return $retVal;
+	}
 
 }
 

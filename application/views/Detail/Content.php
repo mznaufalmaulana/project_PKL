@@ -16,7 +16,7 @@
 
         <!-- your content goes here -->
         <?php 
-          $this->load->view('detail/v_dokter');
+          $this->load->view('detail/dokter');
          ?>
 
       </div><!-- am-pagebody -->
@@ -58,7 +58,7 @@
 
         //filtering
         $('#filter').click(function(){
-          var dateSelection = $('dateSelection').val();
+          var dateSelection = $('#dateSelection').val();
           if (dateSelection != '')
           {
             $.ajax({

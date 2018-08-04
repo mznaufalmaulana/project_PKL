@@ -3,9 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class C_Detail extends MY_Controller {
 
+	var $idDokter;
+
 	public function __construct()
 	{
 		parent::__construct();
+		$idDokter = $this->input->get('idDokter');
 		$this->load->model('m_detail');
 	}
 
@@ -28,12 +31,13 @@ class C_Detail extends MY_Controller {
 	{
 		if (isset($_POST['dateSelection'])) {
 			$output = "";
-			$dateSelection = date('Y-m-d');
-			$date_input = $this->input->post("txtDate");
+			$hari = date('Y-m-d');
+			$date_input = $this->input->post("dateSelection");
 
-			$dt['intIDDokter'] = $this->input->get('idDokter');
-			$dt['intDay'] = date('w', strtotime($dateSelection)) + 1;
-			$dt['dtAntrian'] = $date_input ."00:00:00";
+			$dt['intIDDokter'] = "1";
+			$dt['intDay'] = date('w', strtotime($hari)) + 1;
+			$dt['dtAntrian'] = $date_input ." 00:00:00";
+			// echopre($dt['intDay']);die;
 
 			$retVal = $this->m_detail->get_detail_jadwal($dt);
 			$output .= '
@@ -58,7 +62,7 @@ class C_Detail extends MY_Controller {
 							<td>'. $value['dtJamMulai']. ' - ' .$value['dtJamSelesai'] .'</td>
 							<td>'. $value['intJumlahAntrian'] .' </td>
 							<td>'. $value['intKuota'] .' </td>
-							<td> <a href=" echo base_url(\'c_detail\').\'?idPartner=\''.$value['intIDPartner'].' Booking </a></td>
+							<td> <a href="'. base_url('c_detail').'?idPartner'. $value['intIDPartner'] .'"> Booking </a></td>
 						</tr>
 					</tbody>
 				';
@@ -74,6 +78,19 @@ class C_Detail extends MY_Controller {
 		$dt['intIDPartner'] = $this->input->get('idPartner');
 		$retVal['dataPelayanan'] = $this->m_detail->get_data_jenis($dt);
 		$this->load->view('detail/content', $retVal);
+	}
+
+	public function booking_dokter()
+	{
+		$dt['intIDPartner'] = $this->input->get('idPartner');
+		$dt['intIDJenisPelayanan'] = $this->input->get('idPartner');
+		$dt['intIDUser'] = $this->input->get('idPartner');
+		$dt['intIDLoket'] = $this->input->get('idPartner');
+		$dt['intIDJadwalPraktek'] = $this->input->get('idPartner');
+		$dt['dtAntrian'] = $this->input->get('idPartner');
+		$retVal['noAntrian'] = $this->m_detail->booking_dokter($dt);
+		$redirect_url = base_url()."c_antrian";
+		redirect($redirect_url);
 	}
 
 }

@@ -17,6 +17,7 @@
         <!-- your content goes here -->
         <?php 
           $this->load->view('antrian/riwayat_antrian');
+          // $this->load->view('antrian/riwayat');
          ?>
 
       </div><!-- am-pagebody -->

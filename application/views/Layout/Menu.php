@@ -71,7 +71,7 @@
                 <span>Antrian</span>
               </a>
               <ul class="nav-sub">
-                <li class="nav-item"><a href="#" class="nav-link">Riwayat Antrian</a></li>
+                <li class="nav-item"><a href="<?php echo base_url('c_antrian'); ?>" class="nav-link">Riwayat Antrian</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Data Table</a></li>
               </ul>
             </li><!-- nav-item -->
