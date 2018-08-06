@@ -31,13 +31,14 @@ class C_Detail extends MY_Controller {
 	{
 		if (isset($_POST['dateSelection'])) {
 			$output = "";
-			$hari = date('Y-m-d');
 			$date_input = $this->input->post("dateSelection");
+			$hari = $date_input('Y-m-d');
 
 			$dt['intIDDokter'] = "1";
-			$dt['intDay'] = date('w', strtotime($hari)) + 1;
+			$dt['intDay'] = date('w', strtotime($dateSelection)) + 1;
 			$dt['dtAntrian'] = $date_input ." 00:00:00";
 			// echopre($dt['intDay']);die;
+
 
 			$retVal = $this->m_detail->get_detail_jadwal($dt);
 			$output .= '
@@ -46,8 +47,8 @@ class C_Detail extends MY_Controller {
 						<tr>
 							<th class="wd-25p">Lokasi Praktek</th>
 							<th class="wd-20p">Jenis Pelayanan</th>
-							<th class="wd-15p">Jam Pelayanan</th>
-							<th class="wd-25p">Antrian</th>
+							<th class="wd-25p">Jam Pelayanan</th>
+							<th class="wd-15p">Antrian</th>
 							<th class="wd-15p">Kuota</th>
 							<th class="wd-10p"></th>
 						</tr>
@@ -73,11 +74,15 @@ class C_Detail extends MY_Controller {
 		}
 	}
 
-	public function get_data_jenis()
+	public function get_data_loket()
 	{
-		$dt['intIDPartner'] = $this->input->get('idPartner');
-		$retVal['dataPelayanan'] = $this->m_detail->get_data_jenis($dt);
-		$this->load->view('detail/content', $retVal);
+		if (isset($_POST['id'])) {
+			$output = "";
+			$idPartner = $this->input->post("id");
+			// echopre($dt['intDay']);die;
+			$retVal['data-loket'] = $this->m_detail->get_data_loket($idPartner);
+			// $this->load->view('detail/content', $retVal);
+		}
 	}
 
 	public function booking_dokter()

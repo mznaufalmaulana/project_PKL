@@ -77,10 +77,25 @@
         $(document).on("click", "#loketPelayanan", function () {
             var myBookId = $(this).data('id');
             $(".modal-body #jenisLayanan").val( myBookId );
-            // As pointed out in comments, 
-            // it is superfluous to have to manually call the modal.
-            // $('#addBookDialog').modal('show');
         });
+
+        //booking
+        $(document).on('click', 'a[data-role=booking]',function(){
+          var id = $(this).data('id');
+          if (id != '')
+          {
+            $.ajax({
+              url:"<?php echo base_url('c_detail/get_data_loket') ?>",
+              method:"POST",
+              data:{id:id},
+              success:function(data)
+              {
+                $('#pilihLoket').modal('toggle');
+              }
+            });
+          }
+        })
+        
       });
     </script>
 

@@ -19,7 +19,7 @@ class M_Detail extends MY_Model {
 		// echopre($retVal);die;
 		return $retVal;
 	}
-	function get_data_jenis($dt)
+	function get_data_loket($dt)
 	{
 		$sp_name = "User_GetJenisLoketPelayanan";
  		$retParameter = $this->soap_library->set_parameter($sp_name , $dt);

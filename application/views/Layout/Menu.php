@@ -62,7 +62,7 @@
             <li class="nav-item">
               <a href="<?php echo base_url('c_dashboard'); ?>" class="nav-link">
                 <i class="icon ion-ios-home-outline"></i>
-                <span>Dashboard</span>
+                <span>Beranda</span>
               </a>
             </li><!-- nav-item -->
             <li class="nav-item">

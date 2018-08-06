@@ -44,13 +44,13 @@
 			</thead>
 			<tbody>
 			<?php foreach ($jadwal as $key => $value) {	?>
-				<tr>
+				<tr id="<?php echo $value['intIDPartner']; ?>">
 					<td> <?php echo $value['txtPartnerName'] ?> </td>
 					<td> <?php echo $value['txtJenisPelayanan'] ?> </td>
 					<td> <?php echo $value['dtJamMulai']. ' - ' .$value['dtJamSelesai'] ?> </td>
 					<td> <?php echo $value['intJumlahAntrian'] ?> </td>
 					<td> <?php echo $value['intKuota'] ?> </td>
-					<td> <a id="loketPelayanan" href="<?php echo base_url('c_detail/get_data_jenis').'?idPartner='.$value['intIDPartner']; ?>" data-toggle="modal" data-target="#pilihLoket"> Booking </a></td>
+					<td> <a id="loketPelayanan" href="" data-toggle="modal" data-target="#pilihLoket" data-id="<?php echo $value['intIDPartner'] ?>" data-role="booking"> Booking </a></td>
 				</tr>
 			<?php  } ?>
 			</tbody>
@@ -70,11 +70,7 @@
 			</div>
 			<div class="modal-body pd-25">
 				<h4 class="lh-3 mg-b-20">Silahkan Pilih Loket yang Akan Dituju</h4>
-				<?php foreach ($dataPelayanan as $key => $value) { ?>
-					<a id="jenisLayanan" href="<?php echo base_url('c_detail/get_data_jenis').'?idLoket='.$value['intIDLoket']; ?>" type="button" class="btn btn-info pd-x-25">
-						<?php echo $value['txtLoket'] ?>	
-					</a>
-				<?php } ?>
+				<a id="jenisLayanan" href="" type="button" class="btn btn-info pd-x-25"></a>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary pd-x-20" data-dismiss="modal">Close</button>
