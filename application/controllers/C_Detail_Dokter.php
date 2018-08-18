@@ -1,14 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_Detail extends MY_Controller {
-
-	var $idDokter;
+class C_Detail_Dokter extends MY_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$idDokter = $this->input->get('idDokter');
 		$this->load->model('m_detail');
 	}
 
@@ -22,9 +19,11 @@ class C_Detail extends MY_Controller {
 		$dt['dtAntrian'] = $date_input ."00:00:00";
 
 		$id['id'] = $this->input->get('idDokter');
-		$retVal['data'] = $this->m_detail->get_detail($id);
-		$retVal['jadwal'] = $this->m_detail->get_detail_jadwal($dt);
-		$this->load->view('detail/content', $retVal);
+		$retVal['id'] = $this->input->get('idDokter');
+		$retVal['data'] = $this->m_detail->get_detail_dokter($id);
+		$retVal['jadwal'] = $this->m_detail->get_detail_jadwal_dokter($dt);
+		// $retVal['loket'] = $this->m_detail->get_data_loket($id);
+		$this->load->view('detail/Detail_Dokter', $retVal);
 	}
 
 	public function get_data_selection()
@@ -32,15 +31,14 @@ class C_Detail extends MY_Controller {
 		if (isset($_POST['dateSelection'])) {
 			$output = "";
 			$date_input = $this->input->post("dateSelection");
-			$hari = $date_input('Y-m-d');
 
-			$dt['intIDDokter'] = "1";
-			$dt['intDay'] = date('w', strtotime($dateSelection)) + 1;
+			$dt['intIDDokter'] = $this->input->post("idDokter");
+			$dt['intDay'] = date('w', strtotime($date_input)) + 1;
 			$dt['dtAntrian'] = $date_input ." 00:00:00";
 			// echopre($dt['intDay']);die;
 
 
-			$retVal = $this->m_detail->get_detail_jadwal($dt);
+			$retVal = $this->m_detail->get_detail_jadwal_dokter($dt);
 			$output .= '
 				<table id="dataTable" class="table display responsive nowrap">
 					<thead>
@@ -63,7 +61,7 @@ class C_Detail extends MY_Controller {
 							<td>'. $value['dtJamMulai']. ' - ' .$value['dtJamSelesai'] .'</td>
 							<td>'. $value['intJumlahAntrian'] .' </td>
 							<td>'. $value['intKuota'] .' </td>
-							<td> <a href="'. base_url('c_detail').'?idPartner'. $value['intIDPartner'] .'"> Booking </a></td>
+							<td> <a href="" data-toggle="modal" data-target="#pilihLoket" data-role="booking" data-id="'. $value['intIDPartner'] .'"> Booking </a></td>
 						</tr>
 					</tbody>
 				';
@@ -76,26 +74,33 @@ class C_Detail extends MY_Controller {
 
 	public function get_data_loket()
 	{
-		if (isset($_POST['id'])) {
+		if (isset($_POST['idPartner'])) {
 			$output = "";
-			$idPartner = $this->input->post("id");
-			// echopre($dt['intDay']);die;
-			$retVal['data-loket'] = $this->m_detail->get_data_loket($idPartner);
-			// $this->load->view('detail/content', $retVal);
+			$id['intIDPartner'] = $this->input->post("idPartner");
+
+			$retVal = $this->m_detail->get_data_loket($id);
+
+			$output .= '<h4 class="lh-3 mg-b-20">Silahkan Pilih Loket yang Akan Dituju</h4>';
+			foreach ($retVal as $key => $value) {
+				$output .= '
+					<a id="dataInput" href="" type="button" class="btn btn-info pd-x-25" data-toggle="modal" data-target="#inputBerhasil" data-role="booking" data-dismiss="modal">'. $value['txtLoket'] .'</a>
+				';
+			}
+			echo $output;
 		}
 	}
 
 	public function booking_dokter()
 	{
-		$dt['intIDPartner'] = $this->input->get('idPartner');
-		$dt['intIDJenisPelayanan'] = $this->input->get('idPartner');
-		$dt['intIDUser'] = $this->input->get('idPartner');
-		$dt['intIDLoket'] = $this->input->get('idPartner');
-		$dt['intIDJadwalPraktek'] = $this->input->get('idPartner');
-		$dt['dtAntrian'] = $this->input->get('idPartner');
-		$retVal['noAntrian'] = $this->m_detail->booking_dokter($dt);
-		$redirect_url = base_url()."c_antrian";
-		redirect($redirect_url);
+		// $dt['intIDPartner'] = $this->input->get('idPartner');
+		// $dt['intIDJenisPelayanan'] = $this->input->get('idPartner');
+		// $dt['intIDUser'] = $this->input->get('idPartner');
+		// $dt['intIDLoket'] = $this->input->get('idPartner');
+		// $dt['intIDJadwalPraktek'] = $this->input->get('idPartner');
+		// $dt['dtAntrian'] = $this->input->get('idPartner');
+		// $retVal['noAntrian'] = $this->m_detail->booking_dokter($dt);
+		// $redirect_url = base_url()."c_antrian";
+		// redirect($redirect_url);
 	}
 
 }

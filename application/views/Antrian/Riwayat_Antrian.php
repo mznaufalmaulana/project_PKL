@@ -13,13 +13,12 @@
 
         <div class="col-md-12" style="background-color: <?php echo $warna ?>; padding-left: 0px;">
           <div class="card pd-20 pd-sm-40">
+            <h4 class="card-body-title"> <?php echo $value['txtPartnerName'] ?> </h4>
+            <p class="mg-b-20 mg-sm-b-30"> <?php echo $value['dtAntrian'] ?> </p>
+            <hr/>
             <table class="mg-b-0">
               <tbody>
                 <tr>
-                  <td>
-                    <h4 class="card-body-title"> <?php echo $value['txtPartnerName'] ?> </h4>
-                    <p class="mg-b-20 mg-sm-b-30"> <?php echo $value['dtAntrian'] ?> </p>
-                  </td>
                   <td>
                     No. Antrian Loket <br>
                     <h5><?php echo $value['txtNoAntrianLoket'] ?></h5>

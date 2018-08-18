@@ -20,6 +20,7 @@
 
 	<?php } ?>
 	<p class="mg-b-20 mg-sm-b-30">Silahkan Tentukan Hari/Tanggal Yang Anda Inginkan</p>
+	<input type="text" name="idDokter" id="idDokter" value="<?= $id ?>" hidden>
 	<div class="wd-200">
 		<div class="input-group form-control-wrapper">
 				
@@ -44,13 +45,14 @@
 			</thead>
 			<tbody>
 			<?php foreach ($jadwal as $key => $value) {	?>
-				<tr id="<?php echo $value['intIDPartner']; ?>">
+				<tr>
+					<td hidden> <input type="text" name="idPartner" id="idPartner" value="<?= $value['intIDPartner'] ?>" hidden> </td>
 					<td> <?php echo $value['txtPartnerName'] ?> </td>
 					<td> <?php echo $value['txtJenisPelayanan'] ?> </td>
 					<td> <?php echo $value['dtJamMulai']. ' - ' .$value['dtJamSelesai'] ?> </td>
 					<td> <?php echo $value['intJumlahAntrian'] ?> </td>
 					<td> <?php echo $value['intKuota'] ?> </td>
-					<td> <a id="loketPelayanan" href="" data-toggle="modal" data-target="#pilihLoket" data-id="<?php echo $value['intIDPartner'] ?>" data-role="booking"> Booking </a></td>
+					<td> <a id="booking" href="" data-toggle="modal" data-target="#pilihLoket" data-role="booking"> Booking </a></td>
 				</tr>
 			<?php  } ?>
 			</tbody>
@@ -69,8 +71,31 @@
 				</button>
 			</div>
 			<div class="modal-body pd-25">
-				<h4 class="lh-3 mg-b-20">Silahkan Pilih Loket yang Akan Dituju</h4>
-				<a id="jenisLayanan" href="" type="button" class="btn btn-info pd-x-25"></a>
+				<!-- <h4 class="lh-3 mg-b-20">Silahkan Pilih Loket yang Akan Dituju</h4> -->
+				<div id="jenisLayanan"></div>
+				<!-- <a id="jenisLayanan" href="" type="button" class="btn btn-info pd-x-25"></a> -->
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary pd-x-20" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div><!-- modal-dialog -->
+</div><!-- modal -->
+
+
+<div id="inputBerhasil" class="modal fade">
+	<div class="modal-dialog modal-dialog-vertical-center" role="document">
+		<div class="modal-content bd-0 tx-14">
+			<div class="modal-header pd-y-20 pd-x-25">
+				<h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Proses Booking Berhasil</h6>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body pd-25">
+				<h4 class="lh-3 mg-b-20">Berhasil</h4>
+				<div id="jenisLayanan"></div>
+				<!-- <a id="jenisLayanan" href="" type="button" class="btn btn-info pd-x-25"></a> -->
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary pd-x-20" data-dismiss="modal">Close</button>

@@ -50,32 +50,6 @@
             </form>
 
         <?php 
-          // foreach ($data_dokter as $key => $value)
-          // {
-          //   echo "<table border=\"0\">";
-          //     echo "<tr>";
-          //       echo "<td>";
-          //         if (is_null($value['imgAvatar'])) {
-          //           echo "<img class=\"wd-200 img-circle\" src=\" ". BASE_THEME. '/img/user_default.png' ." \">";
-          //         }
-          //         else {
-          //           echo "<img class=\"wd-200 img-circle\" src=\" ". $value['imgAvatar'] ."\">";
-          //         }
-          //       echo "</td>";
-          //       echo "<td>";
-          //         echo "<h3><b><a href=\"". base_url('c_detail/get_detail')."?idDokter=".$value['intIDDokter']; "\">".$value['txtNamaDokter']."</a></b></h3>";
-          //         echo $value['txtNoHP']."<br/>";
-          //         echo $value['txtAlamat']."<br/>";
-          //         echo $value['txtProvinsi']."<br/>";
-          //         echo $value['txtKota']."<br/>";
-          //         echo $value['txtSpesialis']."<br/>";
-          //       echo "</td>";
-          //     echo "</tr>";
-          //   echo "</table>";
-          // }
-        ?>
-
-        <?php 
           foreach ($data_dokter as $key => $value) {
         ?>
           <div class="card">
@@ -83,7 +57,7 @@
               <table class="mg-b-0">
                 <tbody>
                   <tr>
-                    <h5 class="card-title"><a href="<?php echo base_url('c_detail').'?idDokter='.$value['intIDDokter']; ?>""> <?php echo $value['txtNamaDokter'];?> </a></h5>
+                    <h5 class="card-title"><a href="<?php echo base_url('c_detail_dokter').'?idDokter='.$value['intIDDokter']; ?>""> <?php echo $value['txtNamaDokter'];?> </a></h5>
                     <td>
                       <img class="wd-150" src="<?php echo BASE_THEME.'img/user_default.png'?>">
                     </td>
@@ -104,35 +78,3 @@
         <?php
           }
         ?>
-
-        <script type="text/javascript">
-          // f$(document).ready(function(){
-          //     tampil_data_barang();   //pemanggilan fungsi tampil barang.
-               
-          //     $('#dataDokter').dataTable();
-                
-          //     //fungsi tampil barang
-          //     function tampil_data_barang(){
-          //         $.ajax({
-          //             type  : 'ajax',
-          //             url   : '<?php //echo base_url()?>/c_dashboard/viewDokter',
-          //             async : false,
-          //             dataType : 'json',
-          //             success : function(data){
-          //                 var html = '';
-          //                 var i;
-          //                 for(i=0; i<data.length; i++){
-          //                     html += '<tr>'+
-          //                             '<td>'+data[i].txtNamaDokter+'</td>'+
-          //                             '<td>'+data[i].txtNoHP+'</td>'+
-          //                             '<td>'+data[i].txtAlamat+'</td>'+
-          //                             '</tr>';
-          //                 }
-          //                 $('#show_data').html(html);
-          //             }
-       
-          //         });
-          //     }
-       
-          // });
-        </script>

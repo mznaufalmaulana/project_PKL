@@ -14,7 +14,7 @@
           $isLogin = $this->session->userdata('intIDPartner');
           if (!isset($isLogin)) 
             { ?>
-              <a href="<?php echo base_url('c_login') ?>" class="btn btn-orange">Login</a>
+              <a href="<?php echo base_url('c_login') ?>" class="btn btn-orange"> Masuk</a>
         <?php 
             } else { ?>
 
@@ -30,8 +30,9 @@
           </a>
           <div class="dropdown-menu wd-200">
             <ul class="list-unstyled user-profile-nav">
-              <li><a href=""><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
-              <li><a href="<?php echo base_url('c_login/logout') ?>"><i class="icon ion-power"></i> Sign Out</a></li>
+              <li><a href=""><i class="icon ion-ios-person-outline"></i> Lihat Profil</a></li>
+              <li><a href=""><i class="icon ion-ios-person-outline"></i> Edit Profil</a></li>
+              <li><a href="<?php echo base_url('c_login/logout') ?>"><i class="icon ion-power"></i> Keluar</a></li>
             </ul>
           </div><!-- dropdown-menu -->
         </div><!-- dropdown -->
