@@ -41,7 +41,7 @@
             <div class="input-group form-control-wrapper">
                 
               <span class="input-group-addon"><i class="icon ion-calendar tx-16 lh-0 op-6"></i></span>
-              <input type="search" id="dateSelection" name="dateSelection" class="form-control fc-datepicker" placeholder="YYYY/MM/DD">
+              <input type="search" id="dateSelection" name="dateSelection" class="form-control fc-datepicker" placeholder="YYYY/MM/DD" data-target="dtAntrian">
               <input class="btn btn-orange active" type="button" name="filter" id="filter" value="Cari">
               
             </div>
@@ -60,9 +60,17 @@
                 </tr>
               </thead>
               <tbody>
+
+                <?php foreach ($tanggal as $key => $value) {
+                  echo $value;
+                } ?>
+
               <?php foreach ($jadwal as $key => $value) { ?>
-                <tr>
-                  
+                <tr id="<?php echo $value['intIDPartner'] ?>">
+                  <td data-target="idPartner" hidden><?php echo $value['intIDPartner'] ?></td>
+                  <td data-target="idJenisPelayanan" hidden><?php echo $value['intIDJenisPelayanan'] ?></td>
+                  <td data-target="idJadwalPraktek" hidden><?php echo $value['intIDJadwalPraktek'] ?></td>
+
                   <td> <?php echo $value['txtPartnerName'] ?> </td>
                   <td> <?php echo $value['txtJenisPelayanan'] ?> </td>
                   <td> <?php echo $value['dtJamMulai']. ' - ' .$value['dtJamSelesai'] ?> </td>
@@ -77,6 +85,7 @@
         </div><!-- card -->
 
 
+        <!-- Pilih Loket -->
         <div id="pilihLoket" class="modal fade">
           <div class="modal-dialog modal-dialog-vertical-center" role="document">
             <div class="modal-content bd-0 tx-14">
@@ -87,9 +96,13 @@
                 </button>
               </div>
               <div class="modal-body pd-25">
-                <!-- <h4 class="lh-3 mg-b-20">Silahkan Pilih Loket yang Akan Dituju</h4> -->
-                <div id="jenisLayanan"></div>
-                <!-- <a id="jenisLayanan" href="" type="button" class="btn btn-info pd-x-25"></a> -->
+                <h4 class="lh-3 mg-b-20">Silahkan Pilih Loket yang Akan Dituju</h4>
+                  <input type="text" id="idPartner" class="form-control" hidden>
+                  <input type="text" id="idJenisPelayanan" class="form-control" hidden>
+                  <input type="text" id="idJadwalPraktek" class="form-control" hidden>
+                  <!-- <input type="text" id="dtAntrian" class="form-control" > -->
+                <div id="jenisLayanan">
+                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary pd-x-20" data-dismiss="modal">Close</button>
@@ -99,6 +112,7 @@
         </div><!-- modal -->
 
 
+        <!-- Input Berhasil -->
         <div id="inputBerhasil" class="modal fade">
           <div class="modal-dialog modal-dialog-vertical-center" role="document">
             <div class="modal-content bd-0 tx-14">
@@ -179,6 +193,16 @@
         $(document).on('click','a[data-role=booking]',function(){
           // var idPartner = $('#idPartner').val();
           var idPartner = $(this).data('id');
+          var idJenisPelayanan = $('#'+idPartner).children('td[data-target=idJenisPelayanan]').text();
+          var idJadwalPraktek = $('#'+idPartner).children('td[data-target=idJadwalPraktek]').text();
+          // var dtAntrian = $(this).data('input[data-target=dtAntrian]').text();
+
+          $('#idPartner').val(idPartner);
+          $('#idJenisPelayanan').val(idJenisPelayanan);
+          $('#idJadwalPraktek').val(idJadwalPraktek);
+          // $('#dtAntrian').val(dtAntrian);
+          $('#pilihLoket').modal('toggle');
+          
           $.ajax({
             url:"<?php echo base_url('c_detail_dokter/get_data_loket') ?>",
             method:"POST",
@@ -191,16 +215,22 @@
           });
         });
 
-        $('#dataInput').click(function(){
+        // input data pemesanan
+        $(document).on('click','a[data-role=pesanSkr]',function(){
+          var idLoket = $(this).data('id');
           var idPartner = $('#idPartner').val();
+          var idJadwalPraktek = $('#idJadwalPraktek').val();
+          var idJenisPelayanan = $('#idJenisPelayanan').val();
+          var dtAntrian = $('#dtAntrian').val();
+
           $.ajax({
             url:"<?php echo base_url('c_detail_dokter/booking_dokter') ?>",
             method:"POST",
-            data:{idPartner:idPartner},
+            data:{idLoket:idLoket, idPartner:idPartner, idJadwalPraktek:idJadwalPraktek, idJenisPelayanan:idJenisPelayanan, dtAntrian:dtAntrian},
             success:function(data)
             {
               // alert(idPartner);
-              $('#jenisLayanan').html(data);
+              $('#dataBooking').html(data);
             }
           });
         });
