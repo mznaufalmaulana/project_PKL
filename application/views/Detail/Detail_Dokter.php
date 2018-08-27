@@ -47,6 +47,9 @@
             </div>
           </div><!-- wd-200 -->
           <br>
+                  <?php foreach ($tanggal as $key => $value) { ?>
+                    <input type="text" name="dtAntrian" id="dtAntrian" value="<?php echo $value ?>" hidden>
+                  <?php } ?>
           <div class="table-wrapper">
             <table id="dataTable" class="table display responsive nowrap">
               <thead>
@@ -61,9 +64,6 @@
               </thead>
               <tbody>
 
-                <?php foreach ($tanggal as $key => $value) {
-                  echo $value;
-                } ?>
 
               <?php foreach ($jadwal as $key => $value) { ?>
                 <tr id="<?php echo $value['intIDPartner'] ?>">
@@ -90,17 +90,17 @@
           <div class="modal-dialog modal-dialog-vertical-center" role="document">
             <div class="modal-content bd-0 tx-14">
               <div class="modal-header pd-y-20 pd-x-25">
-                <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">PILIH LOKET</h6>
+                <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Pilih Loket</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body pd-25">
                 <h4 class="lh-3 mg-b-20">Silahkan Pilih Loket yang Akan Dituju</h4>
-                  <input type="text" id="idPartner" class="form-control" hidden>
-                  <input type="text" id="idJenisPelayanan" class="form-control" hidden>
-                  <input type="text" id="idJadwalPraktek" class="form-control" hidden>
-                  <!-- <input type="text" id="dtAntrian" class="form-control" > -->
+                  <input type="text" id="idPartner" class="form-control" >
+                  <input type="text" id="idJenisPelayanan" class="form-control" >
+                  <input type="text" id="idJadwalPraktek" class="form-control" >
+                  <input type="text" id="dtAntrian" class="form-control" >
                 <div id="jenisLayanan">
                 </div>
               </div>
@@ -117,18 +117,17 @@
           <div class="modal-dialog modal-dialog-vertical-center" role="document">
             <div class="modal-content bd-0 tx-14">
               <div class="modal-header pd-y-20 pd-x-25">
-                <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Proses Booking Berhasil</h6>
+                <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Perhatian</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body pd-25">
-                <h4 class="lh-3 mg-b-20">Berhasil</h4>
                 <div id="dataBooking"></div>
                 <!-- <a id="jenisLayanan" href="" type="button" class="btn btn-info pd-x-25"></a> -->
               </div>
               <div class="modal-footer">
-                <a href="<?php echo base_url('c_antrian') ?>" type="button" class="btn btn-secondary pd-x-20" data-dismiss="modal">Close</a>
+                <a href="<?php echo base_url('c_antrian') ?>" type="button" class="btn btn-primary pd-x-20">OK</a>
               </div>
             </div>
           </div><!-- modal-dialog -->
@@ -175,6 +174,9 @@
         $('#filter').click(function(){
           var dateSelection = $('#dateSelection').val();
           var idDokter = $('#idDokter').val();
+          var dateNow = dateSelection + " 00:00:00";
+
+          $('#dtAntrian').val(dateNow);
           if (dateSelection != '')
           {
             $.ajax({
@@ -195,12 +197,12 @@
           var idPartner = $(this).data('id');
           var idJenisPelayanan = $('#'+idPartner).children('td[data-target=idJenisPelayanan]').text();
           var idJadwalPraktek = $('#'+idPartner).children('td[data-target=idJadwalPraktek]').text();
-          // var dtAntrian = $(this).data('input[data-target=dtAntrian]').text();
+          var dtAntrian = $('#dtAntrian').val();
 
           $('#idPartner').val(idPartner);
           $('#idJenisPelayanan').val(idJenisPelayanan);
           $('#idJadwalPraktek').val(idJadwalPraktek);
-          // $('#dtAntrian').val(dtAntrian);
+          $('#dtAntrian').val(dtAntrian);
           $('#pilihLoket').modal('toggle');
           
           $.ajax({

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class C_Detail_Dokter extends MY_Controller {
 
-	var $dataTanggal;
+	private $result;
 
 	public function __construct()
 	{
@@ -11,13 +11,21 @@ class C_Detail_Dokter extends MY_Controller {
 		$this->load->library('session');
 		$this->load->model('m_detail');
 		$this->session->all_userdata();
+
+		$dateSelection = date('Y-m-d');
+		$date_input = $this->input->post("txtDate");
+		$date = new DateTime($dateSelection);
+		$this->result = $date->format('Y-m-d H:i:s');
 	}
 
 	public function index()
 	{
 		$dateSelection = date('Y-m-d');
 		$date_input = $this->input->post("txtDate");
-		$dataTanggal = $date_input;
+		$date = new DateTime($dateSelection);
+		$this->result = $date->format('Y-m-d H:i:s');
+		// $this->$dataTanggal = $result;
+		// echopre($result);die;
 
 		$dt['intIDDokter'] = $this->input->get('idDokter');
 		$dt['intDay'] = date('w', strtotime($dateSelection)) + 1;
@@ -27,7 +35,8 @@ class C_Detail_Dokter extends MY_Controller {
 		$retVal['id'] = $this->input->get('idDokter');
 		$retVal['data'] = $this->m_detail->get_detail_dokter($id);
 		$retVal['jadwal'] = $this->m_detail->get_detail_jadwal_dokter($dt);
-		$retVal['tanggal'] = $date_input;
+		$retVal['tanggal'] = array('date' => $this->result );
+		// echopre($retVal['tanggal']);die;
 		// $retVal['loket'] = $this->m_detail->get_data_loket($id);
 		$this->load->view('detail/Detail_Dokter', $retVal);
 	}
@@ -37,7 +46,8 @@ class C_Detail_Dokter extends MY_Controller {
 		if (isset($_POST['dateSelection'])) {
 			$output = "";
 			$date_input = $this->input->post("dateSelection");
-			$dataTanggal = $date_input;
+			$date = new DateTime($date_input);
+			$this->result = $date->format('Y-m-d H:i:s');
 
 			$dt['intIDDokter'] = $this->input->post("idDokter");
 			$dt['intDay'] = date('w', strtotime($date_input)) + 1;
@@ -46,6 +56,7 @@ class C_Detail_Dokter extends MY_Controller {
 
 
 			$retVal = $this->m_detail->get_detail_jadwal_dokter($dt);
+
 			$output .= '
 				<table id="dataTable" class="table display responsive nowrap">
 					<thead>
@@ -62,7 +73,7 @@ class C_Detail_Dokter extends MY_Controller {
 			foreach ($retVal as $key => $value) {
 				$output .= '
 					<tbody>
-						<tr>
+						<tr id="'. $value['intIDPartner'] .'">
 							<td data-target="idPartner" hidden>'. $value['intIDPartner'] .'</td>
 							<td data-target="idJenisPelayanan" hidden>'. $value['intIDJenisPelayanan'] .'</td>
 							<td data-target="idJadwalPraktek" hidden>'. $value['intIDJadwalPraktek'] .'</td>
@@ -70,7 +81,7 @@ class C_Detail_Dokter extends MY_Controller {
 							<td>'. $value['txtPartnerName']  .'</td>
 							<td>'. $value['txtJenisPelayanan'] .' </td>
 							<td>'. $value['dtJamMulai']. ' - ' .$value['dtJamSelesai'] .'</td>
-							<td data-target="dtAntrian">'. $value['intJumlahAntrian'] .' </td>
+							<td>'. $value['intJumlahAntrian'] .' </td>
 							<td>'. $value['intKuota'] .' </td>
 							<td> <a href="" data-toggle="modal" data-target="#pilihLoket" data-role="booking" data-id="'. $value['intIDPartner'] .'"> Booking </a></td>
 						</tr>
@@ -103,17 +114,41 @@ class C_Detail_Dokter extends MY_Controller {
 
 	public function booking_dokter()
 	{
-		if (isset($_POST['idLoket'])) {
-			$dt['intIDPartner'] = $this->input->post("idPartner");
-			$dt['intIDJenisPelayanan'] = $this->input->post("idJenisPelayanan");
-			$dt['intIDUser'] = $this->session->userdata('intIDPartner');
-			$dt['intIDLoket'] = $this->input->post("idLoket");
-			$dt['intIDJadwalPraktek'] = $this->input->post("idJadwalPraktek");
-			$dt['dtAntrian'] = $dataTanggal;
-			echopre($dt['dtAntrian']);die;
 
+		$dt['intIDPartner'] = $this->input->post("idPartner");
+		$dt['intIDJenisPelayanan'] = $this->input->post("idJenisPelayanan");
+		$dt['intIDUser'] = $this->session->userdata('intIDPartner');
+		$dt['intIDLoket'] = $this->input->post("idLoket");
+		$dt['intIDJadwalPraktek'] = $this->input->post("idJadwalPraktek");
+		
+		$dt['dtAntrian'] = $this->input->post("dtAntrian");
+		
+		// $dt['dtAntrian'] = $this->result;
+		// echopre($dt);die;
+
+		$output ="";
+		if (isset($dt['intIDUser'])) {
 			$retVal = $this->m_detail->booking_dokter($dt);
+			foreach ($retVal as $key => $value) {
+				$output .= '
+					<h4 class="lh-3 mg-b-20">Berhasil</h4>
+				';
+				$output .= '
+					<p>Selamat Nomor Antrian Anda <b>'. $value['txtNoAntrianLoket'] .'</b> dengan Nomor Antrian Poli <b>'. $value['txtNoAntrianPoli'] .'</b> ada <b>'. $value['txtJenisPelayanan'] .'</b></p>
+				';
+			}
+			echo $output;
+		} else {
+			$output .= '
+					<h4 class="lh-3 mg-b-20">Maaf</h4>
+				';
+			$output .= '
+					Permintaan Anda Tidak Dapat Diproses<br/>
+					Silahkan Lakukan Login Terlebih Dahulu.
+				';
+			echo $output;
 		}
+
 	}
 
 }
