@@ -29,7 +29,7 @@
 
           <div class="tab-content pd-20 pd-sm-40">
             <!-- Laman Dokter -->
-            <div id="dokter" class="tab-pane active"> 
+            <div id="dokter" class="tab-pane active">
               <?php
                 $this->load->view('dashboard/dokter.php');
               ?>

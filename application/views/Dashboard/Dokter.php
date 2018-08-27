@@ -6,7 +6,7 @@
                   <div class="col-lg-8">
                     <select class="form-control" id="catCity" name="kota">
                       <option value="0" disabled selected>Pilih Kota</option>
-                      <?php 
+                      <?php
                         foreach ($data_kota as $key => $value) {
                           echo "<option value=\"".$value['intIDKota']."\">".$value['txtKota']."</option>";
                         }
@@ -22,7 +22,7 @@
                   <div class="col-lg-8">
                     <select class="form-control" id="catSpesialis" name="spesialis">
                       <option value="0" disabled selected>Pilih Spesialis</option>
-                      <?php 
+                      <?php
                         foreach ($data_spesialis as $key => $value) {
                           echo "<option value=\"".$value['intIDSpesialisDokter']."\">".$value['txtSpesialis']."</option>";
                         }
@@ -44,12 +44,12 @@
 
                 <div class="form-group">
                   <div class="col-lg-10 col-lg-offset-2">
-                    <button type="done" class="btn btn-primary" id="btnSubmit"">Sorting</button>
+                    <button type="done" class="btn btn-primary" id="btnSubmit">Sorting</button>
                   </div>
                 </div> <!-- Akhir Tombol -->
             </form>
 
-        <?php 
+        <?php
           foreach ($data_dokter as $key => $value) {
         ?>
           <div class="card">
@@ -57,7 +57,7 @@
               <table class="mg-b-0">
                 <tbody>
                   <tr>
-                    <h5 class="card-title"><a href="<?php echo base_url('c_detail_dokter').'?idDokter='.$value['intIDDokter']; ?>""> <?php echo $value['txtNamaDokter'];?> </a></h5>
+                    <h5 class="card-title"><a href="<?php echo base_url('c_detail_dokter').'?idDokter='.$value['intIDDokter']; ?>"> <?php echo $value['txtNamaDokter'];?> </a></h5>
                     <td>
                       <img class="wd-150" src="<?php echo BASE_THEME.'img/user_default.png'?>">
                     </td>
@@ -74,7 +74,7 @@
                 </tbody>
               </table>
             </div>
-          </div><!-- card -->
+          </div> <!-- card -->
         <?php
           }
         ?>
