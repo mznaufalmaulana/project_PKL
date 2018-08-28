@@ -47,9 +47,11 @@
             </div>
           </div><!-- wd-200 -->
           <br>
-                  <?php foreach ($tanggal as $key => $value) { ?>
-                    <input type="text" name="dtAntrian" id="dtAntrian" value="<?php echo $value ?>" hidden>
-                  <?php } ?>
+          
+          <?php foreach ($tanggal as $key => $value) { ?>
+            <input type="text" name="dtAntrian" id="dtAntrian" value="<?php echo $value ?>" hidden>
+          <?php } ?>
+          
           <div class="table-wrapper">
             <table id="dataTable" class="table display responsive nowrap">
               <thead>
@@ -97,10 +99,10 @@
               </div>
               <div class="modal-body pd-25">
                 <h4 class="lh-3 mg-b-20">Silahkan Pilih Loket yang Akan Dituju</h4>
-                  <input type="text" id="idPartner" class="form-control" >
-                  <input type="text" id="idJenisPelayanan" class="form-control" >
-                  <input type="text" id="idJadwalPraktek" class="form-control" >
-                  <input type="text" id="dtAntrian" class="form-control" >
+                  <input type="text" id="idPartner" class="form-control" hidden>
+                  <input type="text" id="idJenisPelayanan" class="form-control" hidden>
+                  <input type="text" id="idJadwalPraktek" class="form-control" hidden>
+                  <input type="text" id="dtAntrian" class="form-control" hidden>
                 <div id="jenisLayanan">
                 </div>
               </div>
@@ -124,10 +126,6 @@
               </div>
               <div class="modal-body pd-25">
                 <div id="dataBooking"></div>
-                <!-- <a id="jenisLayanan" href="" type="button" class="btn btn-info pd-x-25"></a> -->
-              </div>
-              <div class="modal-footer">
-                <a href="<?php echo base_url('c_antrian') ?>" type="button" class="btn btn-primary pd-x-20">OK</a>
               </div>
             </div>
           </div><!-- modal-dialog -->
@@ -166,9 +164,6 @@
             numberOfMonths: 2
           });
         });
-        // $(document).on("click","#filter", function(){
-
-        // })
 
         //filtering
         $('#filter').click(function(){

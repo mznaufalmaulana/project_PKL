@@ -24,7 +24,6 @@ class C_Detail_Dokter extends MY_Controller {
 		$date_input = $this->input->post("txtDate");
 		$date = new DateTime($dateSelection);
 		$this->result = $date->format('Y-m-d H:i:s');
-		// $this->$dataTanggal = $result;
 		// echopre($result);die;
 
 		$dt['intIDDokter'] = $this->input->get('idDokter');
@@ -37,7 +36,6 @@ class C_Detail_Dokter extends MY_Controller {
 		$retVal['jadwal'] = $this->m_detail->get_detail_jadwal_dokter($dt);
 		$retVal['tanggal'] = array('date' => $this->result );
 		// echopre($retVal['tanggal']);die;
-		// $retVal['loket'] = $this->m_detail->get_data_loket($id);
 		$this->load->view('detail/Detail_Dokter', $retVal);
 	}
 
@@ -114,7 +112,7 @@ class C_Detail_Dokter extends MY_Controller {
 
 	public function booking_dokter()
 	{
-
+		$alamatUrl = "";
 		$dt['intIDPartner'] = $this->input->post("idPartner");
 		$dt['intIDJenisPelayanan'] = $this->input->post("idJenisPelayanan");
 		$dt['intIDUser'] = $this->session->userdata('intIDPartner');
@@ -129,6 +127,9 @@ class C_Detail_Dokter extends MY_Controller {
 		$output ="";
 		if (isset($dt['intIDUser'])) {
 			$retVal = $this->m_detail->booking_dokter($dt);
+			
+			$alamatUrl = "c_antrian";
+
 			foreach ($retVal as $key => $value) {
 				$output .= '
 					<h4 class="lh-3 mg-b-20">Berhasil</h4>
@@ -139,6 +140,9 @@ class C_Detail_Dokter extends MY_Controller {
 			}
 			echo $output;
 		} else {
+
+			$alamatUrl = "c_login";
+
 			$output .= '
 					<h4 class="lh-3 mg-b-20">Maaf</h4>
 				';
@@ -146,9 +150,14 @@ class C_Detail_Dokter extends MY_Controller {
 					Permintaan Anda Tidak Dapat Diproses<br/>
 					Silahkan Lakukan Login Terlebih Dahulu.
 				';
-			echo $output;
 		}
 
+		$output .= '
+			<div class="modal-footer">
+				<a href="'. $alamatUrl .'" type="button" class="btn btn-primary pd-x-20">OK</a>
+			</div>
+		';
+		echo $output;
 	}
 
 }

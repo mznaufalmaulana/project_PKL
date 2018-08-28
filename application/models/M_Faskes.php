@@ -7,8 +7,8 @@ class M_Faskes extends MY_Model
 	function ambilData($sp_name,$arrParams)
 	{
 		$retParameter = $this->soap_library->set_parameter($sp_name , $arrParams);
-    $retVal = $this->retrieveData($retParameter , "CallSpExcecution");
-    return $retVal;
+	    $retVal = $this->retrieveData($retParameter , "CallSpExcecution");
+	    return $retVal;
 	}
 	function get_filter_kota($idkota = 0,$txtkota = '')
 	{

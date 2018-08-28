@@ -59,31 +59,30 @@ foreach ($data_faskes as $key => $value) {
       <table class="mg-b-0">
         <tbody>
           <tr>
-            <h5 class="card-title"><?php echo $value['txtPartnerName']; ?></h5>
-            <td>
-              <img class="wd-150" src="<?php echo BASE_THEME.'img/user_default.png'?>">;
-            </td>
             <td style="padding-left: 10px;">
-              <p class="card-text">
-                <?php echo $value['txtAlamat'] ?> <br>
-                <?php echo $value['txtKota'].", ".$value['txtProvinsi']; ?>, Indonesia <br>
-                <?php
-                  $keys = array_keys($list_layanan);
-                  for ($j = 0; $j < count($list_layanan[$i]); $j++){
-                    echo $list_layanan[$i][$j]['txtJenisPelayanan'];
-                    if ($j+1 < count($list_layanan[$i])){
-                        echo ", ";
+              <a href="<?php echo base_url('c_detail_faskes').'?idFaskes='.$value['intIDPartner']; ?>">
+                <h5 class="card-title"><?php echo $value['txtPartnerName']; ?></h5>
+              </a>
+                <p class="card-text">
+                  <?php echo $value['txtAlamat'] ?> <br>
+                  <?php echo $value['txtKota'].", ".$value['txtProvinsi']; ?>, Indonesia <br>
+                  <?php
+                    $keys = array_keys($list_layanan);
+                    for ($j = 0; $j < count($list_layanan[$i]); $j++){
+                      echo $list_layanan[$i][$j]['txtJenisPelayanan'];
+                      if ($j+1 < count($list_layanan[$i])){
+                          echo ", ";
+                      }
                     }
-                  }
-                  echo "<br>";
-                  for ($j = 0; $j < count($list_jamkes[$i]); $j++){
-                    echo $list_jamkes[$i][$j]['txtJenisJamKes'];
-                    if ($j+1 < count($list_jamkes[$i])){
-                        echo ", ";
-                    }
-                  } $i++;
-                ?>
-              </p>
+                    echo "<br>";
+                    for ($j = 0; $j < count($list_jamkes[$i]); $j++){
+                      echo $list_jamkes[$i][$j]['txtJenisJamKes'];
+                      if ($j+1 < count($list_jamkes[$i])){
+                          echo ", ";
+                      }
+                    } $i++;
+                  ?>
+                </p>
             </td>
           </tr>
         </tbody>
