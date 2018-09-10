@@ -5,6 +5,7 @@
       $this->load->view('layout/header');
       $this->load->view('layout/csshandler');
     ?>
+    <title>404 - Page Not Found</title>
   </head>
 
   <body>

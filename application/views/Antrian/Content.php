@@ -5,12 +5,17 @@
       $this->load->view('layout/header');
       $this->load->view('layout/csshandler');
     ?>
+    <title>Medique - Riwayat Antrian</title>
   </head>
 
   <body>
     <?php
       $this->load->view('layout/menu');
     ?>
+    <div class="am-pagetitle">
+      <h5 class="am-title">Riwayat Antrian</h5>
+    </div><!-- am-pagetitle -->
+
     <div class="am-mainpanel">
       <div class="am-pagebody">
 

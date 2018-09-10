@@ -30,8 +30,7 @@
           </a>
           <div class="dropdown-menu wd-200">
             <ul class="list-unstyled user-profile-nav">
-              <li><a href=""><i class="icon ion-ios-person-outline"></i> Lihat Profil</a></li>
-              <li><a href=""><i class="icon ion-ios-person-outline"></i> Edit Profil</a></li>
+              <li><a href="<?php echo base_url('c_profil').'?idUser='.$isLogin; ?>"><i class="icon ion-ios-person-outline"></i> Lihat Profil</a></li>
               <li><a href="<?php echo base_url('c_login/logout') ?>"><i class="icon ion-power"></i> Keluar</a></li>
             </ul>
           </div><!-- dropdown-menu -->
@@ -47,13 +46,13 @@
           <a href="#mainMenu" class="nav-link active"><i class="icon ion-ios-home-outline tx-24"></i></a>
         </li>
         <li class="nav-item">
-          <a href="#emailMenu" class="nav-link"><i class="icon ion-ios-email-outline tx-24"></i></a>
+          <a href="#mainMenu" class="nav-link"></a>
         </li>
         <li class="nav-item">
-          <a href="#chatMenu" class="nav-link"><i class="icon ion-ios-chatboxes-outline tx-24"></i></a>
+          <a href="#mainMenu" class="nav-link"></a>
         </li>
         <li class="nav-item">
-          <a href="#settingMenu" class="nav-link"><i class="icon ion-ios-gear-outline tx-24"></i></a>
+          <a href="#mainMenu" class="nav-link"></a>
         </li>
       </ul>
 
@@ -67,14 +66,10 @@
               </a>
             </li><!-- nav-item -->
             <li class="nav-item">
-              <a href="" class="nav-link with-sub">
+              <a href="<?php echo base_url('c_antrian'); ?>" class="nav-link">
                 <i class="icon ion-ios-list-outline"></i>
                 <span>Antrian</span>
               </a>
-              <ul class="nav-sub">
-                <li class="nav-item"><a href="<?php echo base_url('c_antrian'); ?>" class="nav-link">Riwayat Antrian</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Data Table</a></li>
-              </ul>
             </li><!-- nav-item -->
           </ul>
         </div><!-- #mainMenu -->
@@ -82,12 +77,12 @@
       </div><!-- tab-content -->
     </div><!-- am-sideleft -->
 
-    <div class="am-pagetitle">
-      <h5 class="am-title">Blank Page</h5>
+    <!-- <div class="am-pagetitle">
+      <h5 class="am-title"></h5>
       <form id="searchBar" class="search-bar" action="index.html">
         <div class="form-control-wrapper">
           <input type="search" class="form-control bd-0" placeholder="Search...">
-        </div><!-- form-control-wrapper -->
+        </div>
         <button id="searchBtn" class="btn btn-orange"><i class="fa fa-search"></i></button>
-      </form><!-- search-bar -->
-    </div><!-- am-pagetitle -->
+      </form>
+    </div> -->

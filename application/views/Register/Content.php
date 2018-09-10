@@ -5,7 +5,7 @@
       $this->load->view('layout/header');
       $this->load->view('layout/csshandler');
     ?>
-    
+    <title>Medique - Daftar</title>
   </head>
 
   <body>

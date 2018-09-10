@@ -6,12 +6,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 class C_Dashboard extends MY_Controller
 {
-	var $meta_title = "Medique - Dashboard";
-    var $meta_desc = "Dashboard";
-	var $main_title = "Dashboard";
-    var $base_url = "";
-	var $base_url_pasien = "";
-	var $limit = "";
 
 	public function __construct()
 	{
@@ -68,7 +62,7 @@ class C_Dashboard extends MY_Controller
 		$retVal ['list_jamkes'] = array($this->m_faskes->get_list_jamkes(1),$this->m_faskes->get_list_jamkes(2),$this->m_faskes->get_list_jamkes(3),$this->m_faskes->get_list_jamkes(4));
 		$this->load->view('dashboard/content', $retVal);
 	}
-	function viewDokter()
+	function filter_dokter()
 	{
 		$dt = array(
 				"txtKeyword" => "0",
@@ -76,8 +70,8 @@ class C_Dashboard extends MY_Controller
 				"intIDSpesialisDokter" => $this->input->post("spesialis"),
 				"intIDJenisKelamin" => $this->input->post("jk_group")
 			);
-		$data = $this->m_doctor->show_doctor($dt)->result();
-		echo json_encode($data);
+		$data = $this->m_doctor->show_doctor($dt);
+		$output = '';
 	}
 }
  ?>

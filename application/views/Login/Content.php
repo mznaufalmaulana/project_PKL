@@ -5,6 +5,7 @@
       $this->load->view('layout/header');
       $this->load->view('layout/csshandler');
     ?>
+    <title>Medique - Masuk</title>
   </head>
 
   <body>

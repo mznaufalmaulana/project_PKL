@@ -5,23 +5,36 @@
       $this->load->view('layout/header');
       $this->load->view('layout/csshandler');
     ?>
+    <title>Medique - Detail Dokter</title>
   </head>
 
   <body>
     <?php
       $this->load->view('layout/menu');
     ?>
+    
+    <div class="am-pagetitle">
+      <h5 class="am-title">Detail</h5>
+    </div><!-- am-pagetitle -->
+
     <div class="am-mainpanel">
       <div class="am-pagebody">
 
         <div class="card pd-20 pd-sm-40">
-          <?php foreach ($data as $key => $value) { ?>
+          <?php foreach ($data as $key => $value) { 
+            $imgAvatar;
+              if (isset($value['imgAvatar'])) {
+                $imgAvatar = $value['imgAvatar'];
+              } else {
+                $imgAvatar = BASE_THEME.'img/user_default.png';
+              }
+          ?>
           
           <table class="mg-b-0">
             <tbody>
               <tr>
                 <td class="wd-15p">
-                  <img class="wd-150" src="<?php echo BASE_THEME.'img/user_default.png'?>">
+                  <img class="wd-150" src="<?php echo $imgAvatar?>">
                 </td>
                 <td style="padding-left: 10px;">
                   <h3 class="card-title"><?php echo $value['txtNamaDokter'] ?></h3>
@@ -35,6 +48,7 @@
 
 
           <?php } ?>
+          <br><br>
           <p class="mg-b-20 mg-sm-b-30">Silahkan Tentukan Hari/Tanggal Yang Anda Inginkan</p>
           <input type="text" name="idDokter" id="idDokter" value="<?= $id ?>" hidden>
           <div class="wd-200">

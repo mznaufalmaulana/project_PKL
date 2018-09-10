@@ -1,9 +1,9 @@
 <form action="<?php echo base_url('c_dashboard') ?>" class="form-horizontal" role="form" method="POST">
                 <!-- pilih kota -->
-                <div class="form-group">
-                  <label for="contact-name" class="col-lg-2 control-label">Pilih Kota</label>
+                <div class="row row-xs mg-t-20">
+                  <label class="col-sm-3 form-control-label">Pilih Kota</label>
 
-                  <div class="col-lg-8">
+                  <div class="col-sm-9 mg-t-10 mg-sm-t-0">
                     <select class="form-control" id="faskk" name="faskota">
                       <option value="0" disabled selected>Pilih Kota</option>
                       <?php
@@ -16,10 +16,10 @@
                 </div> <!-- Akhir form kota -->
 
                 <!-- Pilih Klinik -->
-                <div class="form-group">
-                  <label for="contact-name" class="col-lg-2 control-label">Pilih Klinik</label>
+                <div class="row row-xs mg-t-20">
+                  <label class="col-sm-3 form-control-label">Pilih Klinik</label>
 
-                  <div class="col-lg-8">
+                  <div class="col-sm-9 mg-t-10 mg-sm-t-0">
                     <select class="form-control" id="faskk" name="fasklinik">
                       <option value="0" disabled selected>Pilih Klinik</option>
                       <?php
@@ -32,20 +32,19 @@
                 </div> <!-- Akhir form klinik -->
 
                 <!-- Jaminan Kesehatan -->
-                <div class="form-group">
-                  <label for="contact-name" class="col-lg-2 control-label">Pilih Jaminan Kesehatan</label>
+                <div class="row row-xs mg-t-20">
+                  <label class="col-sm-3 form-control-label">Pilih Jaminan Kesehatan</label>
 
-                  <div class="col-lg-8">
-                    <?php
-                      foreach ($faskes_jamkes as $key => $value) {
-      									echo "<input type=\"checkbox\" name=\"jamkes[]\" value=\"".$value['intIDJenisJamKes']."\">".$value['txtJenisJamKes']."<br>";
-      								}
-                    ?>
+                  <div class="col-sm-9 mg-t-10 mg-sm-t-0">
+                    <?php foreach ($faskes_jamkes as $key => $value) { ?>
+                        <input type="checkbox" name="jamkes" value="<?= $value['intIDJenisJamKes'] ?>"> &nbsp; <?= $value['txtJenisJamKes'] ?><br>
+      							<?php } ?>
                   </div>
                 </div> <!-- Akhir form Jaminan Kesehatan -->
 
-                <div class="form-group">
-                  <div class="col-lg-10 col-lg-offset-2">
+                <div class="row row-xs mg-t-20">
+                  <div class="col-sm-3 form-control-label"></div>
+                  <div class="col-sm-9 mg-t-10 mg-sm-t-0">
                     <button type="done" class="btn btn-primary" id="btnSubmitFilter">Sorting</button>
                   </div>
                 </div> <!-- Akhir Tombol -->
@@ -61,11 +60,11 @@ foreach ($data_faskes as $key => $value) {
           <tr>
             <td style="padding-left: 10px;">
               <a href="<?php echo base_url('c_detail_faskes').'?idFaskes='.$value['intIDPartner']; ?>">
-                <h5 class="card-title"><?php echo $value['txtPartnerName']; ?></h5>
+                <h5 class="card-title"><?= $value['txtPartnerName']; ?></h5>
               </a>
                 <p class="card-text">
-                  <?php echo $value['txtAlamat'] ?> <br>
-                  <?php echo $value['txtKota'].", ".$value['txtProvinsi']; ?>, Indonesia <br>
+                  <?= $value['txtAlamat'] ?> <br>
+                  <?= $value['txtKota'].", ".$value['txtProvinsi']; ?>, Indonesia <br>
                   <?php
                     $keys = array_keys($list_layanan);
                     for ($j = 0; $j < count($list_layanan[$i]); $j++){
@@ -84,7 +83,7 @@ foreach ($data_faskes as $key => $value) {
                   ?>
                 </p>
             </td>
-          </tr>
+          </tr><hr>
         </tbody>
       </table>
     </div>
