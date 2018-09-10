@@ -25,6 +25,7 @@ class C_Profil extends CI_Controller {
 	public function insertData()
 	{
 		$image;
+		$check;
 		if (isset($_POST['submit'])) {
 			# code...
 			$dt['intIDUser'] = $this->input->post("idUser");
@@ -37,9 +38,9 @@ class C_Profil extends CI_Controller {
 			$dt['intIDJaminanKesehatan'] = $this->input->post("jenisJamkes");
 			$dt['txtNoJaminanKesehatan'] = $this->input->post("noJamkes");
 
-			$image = $_FILES['fotoProfil']['name'];
-			$tipe = pathinfo($image, PATHINFO_EXTENSION);
-			$image = 'data:image/'.$tipe.';base64,'.base64_encode($image);
+			$check = getimagesize($_FILES['fotoProfil']['tmp_name']);
+			$image = base64_encode(file_get_contents($_FILES["fotoProfil"]["tmp_name"]));
+			$image = 'data:'.$check["mime"].';base64,'.$image;
 
 			$dt['txtAvatar'] = $image;
 		}

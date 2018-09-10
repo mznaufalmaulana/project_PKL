@@ -81,7 +81,7 @@
             success:function(data)
             {
               alert(jenisKelamin.value);
-              $('#dokter').html(data);
+              $('#dataDokter').html(data);
             }
           });
 

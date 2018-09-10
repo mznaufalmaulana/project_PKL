@@ -1,4 +1,4 @@
-            <form  class="form-horizontal" role="form" method="POST">
+            <!-- <form  class="form-horizontal" role="form" method="POST"> -->
                 <!-- pilih kota -->
                 <div class="row row-xs mg-t-20">
                   <label class="col-sm-3 form-control-label">Pilih Kota</label>
@@ -44,7 +44,7 @@
                     <button type="done" class="btn btn-primary" id="btnSubmit-dokter">Sorting</button>
                   </div>
                 </div> <!-- Akhir Tombol -->
-            </form>
+            <!-- </form> --> 
 
         <?php
           foreach ($data_dokter as $key => $value) {
@@ -57,7 +57,7 @@
         ?>
           <div class="card">
             <div class="card-body">
-              <table class="mg-b-0">
+              <table class="mg-b-0" id="dataDokter">
                 <tbody>
                   <tr>
                     <td>
