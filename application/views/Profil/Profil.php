@@ -26,10 +26,15 @@
         <div class="card pd-20 pd-sm-40">
           <?php foreach ($dataProfil as $key => $value) { 
                 $imgAvatar;
+                $tanggal;
                 if (isset($value['txtAvatar'])) {
                   $imgAvatar = $value['txtAvatar'];
                 } else {
                   $imgAvatar = BASE_THEME.'img/user_default.png';
+                }
+
+                if (isset($value['dtTanggalLahir'])) {
+                  $tanggal = explode("T", $value['dtTanggalLahir']);
                 }
           ?>
           <div class="row pd-t-20">
@@ -52,7 +57,7 @@
 
                   <li class="mg-t-10" title="Tanggal Lahir">
                     <i class="fa fa-calendar"></i>
-                    &nbsp;<?= $value['txtTempatLahir'] ?>&nbsp;<?= $value['dtTanggalLahir'] ?>
+                    &nbsp;<?= $value['txtTempatLahir'] ?>&nbsp;<?= $tanggal[0] ?>
                   </li>
                   
                   <li class="mg-t-10" title="Alamat">

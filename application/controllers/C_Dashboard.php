@@ -64,38 +64,38 @@ class C_Dashboard extends MY_Controller
 	}
 	function filter_dokter()
 	{
-		$dt = array(
-				"txtKeyword" => "0",
-				"intIDKota" => $this->input->post("kota"),
-				"intIDSpesialisDokter" => $this->input->post("spesialis"),
-				"intIDJenisKelamin" => $this->input->post("jk_group")
-			);
-		$data = $this->m_doctor->show_doctor($dt);
-		$output = '';
+		// $dt = array(
+		// 		"txtKeyword" => "0",
+		// 		"intIDKota" => $this->input->post("kota"),
+		// 		"intIDSpesialisDokter" => $this->input->post("spesialis"),
+		// 		"intIDJenisKelamin" => $this->input->post("jk_group")
+		// 	);
+		// $data = $this->m_doctor->show_doctor($dt);
+		// $output = '';
 
-		foreach ($data as $key => $value) {
-			$output .= '
-						<tBody>
-							<tr>
-								<td>
-								</td>
-								<td style="padding-left: 10px">
-									<a href=" '. base_url('c_detail_dokter') .'?idDokter='. $value['intIDDokter']; .'">
-										<h5 class="card-title">'. $value['txtNamaDokter']; . '</h5>
-									</a>
-									<p class="card-text">'.
-										$value['txtNoHP'];  .'<br>'.
-										$value['txtAlamat']; .'<br>'.
-										$value['txtProvinsi']; .'<br>'.
-										$value['txtKota']; .'<br>'.
-										$value['txtSpesialis']; .'<br>
-									</p>
-								</td>
-							</tr><hr>
-						</tBody>
-					';
-		}
-		echo $output;
+		// foreach ($data as $key => $value) {
+		// 	$output .= '
+		// 				<tBody>
+		// 					<tr>
+		// 						<td>
+		// 						</td>
+		// 						<td style="padding-left: 10px">
+		// 							<a href=" '. base_url('c_detail_dokter') .'?idDokter='. $value['intIDDokter']; .'">
+		// 								<h5 class="card-title">'. $value['txtNamaDokter']; . '</h5>
+		// 							</a>
+		// 							<p class="card-text">'.
+		// 								$value['txtNoHP'];  .'<br>'.
+		// 								$value['txtAlamat']; .'<br>'.
+		// 								$value['txtProvinsi']; .'<br>'.
+		// 								$value['txtKota']; .'<br>'.
+		// 								$value['txtSpesialis']; .'<br>
+		// 							</p>
+		// 						</td>
+		// 					</tr><hr>
+		// 				</tBody>
+		// 			';
+		// }
+		// echo $output;
 	}
 }
  ?>
