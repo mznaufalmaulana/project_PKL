@@ -1,10 +1,20 @@
             <!-- <form  class="form-horizontal" role="form" method="POST"> -->
+
+                <!-- Cari Dokter -->
+                <div class="row row-xs mg-t-20">
+                  <label class="col-sm-3 form-control-label">Cari Dokter</label>
+
+                  <div class="col-sm-9 mg-t-10 mg-sm-t-0">
+                    <input class="form-control" type="text" id="namaDokter" name="namaDokter" placeholder="Masukkan Nama Dokter">
+                  </div>
+                </div> <!-- Akhir form cari dokter -->
+
                 <!-- pilih kota -->
                 <div class="row row-xs mg-t-20">
                   <label class="col-sm-3 form-control-label">Pilih Kota</label>
 
                   <div class="col-sm-9 mg-t-10 mg-sm-t-0">
-                    <select class="form-control" id="catCity" name="kota">
+                    <select class="form-control" id="kota" name="kota">
                       <option value="0" disabled selected>Pilih Kota</option>
                       <?php foreach ($data_kota as $key => $value) { ?>
                           <option value="<?= $value['intIDKota'] ?>"><?= $value['txtKota'] ?></option>
@@ -18,7 +28,7 @@
                   <label class="col-sm-3 form-control-label">Pilih Spesialis</label>
 
                   <div class="col-sm-9 mg-t-10 mg-sm-t-0">
-                    <select class="form-control" id="catSpesialis" name="spesialis">
+                    <select class="form-control" id="spesialis" name="spesialis">
                       <option value="0" disabled selected>Pilih Spesialis</option>
                       <?php foreach ($data_spesialis as $key => $value) { ?>
                         <option value="<?= $value['intIDSpesialisDokter'] ?>"><?= $value['txtSpesialis'] ?></option>
@@ -41,23 +51,23 @@
                 <div class="row row-xs mg-t-20">
                   <div class="col-sm-3 form-control-label"></div>
                   <div class="col-sm-9 mg-t-10 mg-sm-t-0">
-                    <button type="done" class="btn btn-primary" id="btnSubmit-dokter">Sorting</button>
+                    <input class="btn btn-primary" type="button" name="btnSubmit-dokter" id="btnSubmit-dokter" value="Cari">
                   </div>
                 </div> <!-- Akhir Tombol -->
             <!-- </form> --> 
 
-        <?php
-          foreach ($data_dokter as $key => $value) {
-            $imgAvatar;
-            if (isset($value['imgAvatar'])) {
-              $imgAvatar = $value['imgAvatar'];
-            } else {
-              $imgAvatar = BASE_THEME.'img/user_default.png';
-            }
-        ?>
-          <div class="card">
+        <div class="card" id="dataDokter">
+          <?php
+            foreach ($data_dokter as $key => $value) {
+              $imgAvatar;
+              if (isset($value['imgAvatar'])) {
+                $imgAvatar = $value['imgAvatar'];
+              } else {
+                $imgAvatar = BASE_THEME.'img/user_default.png';
+              }
+          ?>
             <div class="card-body">
-              <table class="mg-b-0" id="dataDokter">
+              <table class="mg-b-0">
                 <tbody>
                   <tr>
                     <td>
@@ -79,7 +89,7 @@
                 </tbody>
               </table>
             </div>
-          </div> <!-- card -->
-        <?php
-          }
-        ?>
+          <?php
+            }
+          ?>
+        </div> <!-- card -->

@@ -31,7 +31,7 @@ class M_Faskes extends MY_Model
 	}
 	function get_data_faskes($data)
 	{
-    $sp_name = "User_SearchFaskes";
+    	$sp_name = "User_SearchFaskes";
 		return $this->ambilData($sp_name,$data);
 	}
 	function get_list_layanan($id)

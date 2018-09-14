@@ -15,12 +15,12 @@
     
     <div class="am-pagetitle">
       <h5 class="am-title">Beranda</h5>
-      <form id="searchBar" class="search-bar" action="index.html">
+      <!-- <form id="searchBar" class="search-bar" action="index.html">
         <div class="form-control-wrapper">
           <input type="search" class="form-control bd-0" placeholder="Cari...">
-        </div><!-- form-control-wrapper -->
+        </div>
         <button id="searchBtn" class="btn btn-orange"><i class="fa fa-search"></i></button>
-      </form><!-- search-bar -->
+      </form> -->
     </div><!-- am-pagetitle -->
 
     <div class="am-mainpanel">
@@ -70,18 +70,58 @@
 
       // filtering dokter
       $('#btnSubmit-dokter').click(function(){
-          var city = $('#catCity').val();
-          var spesialis = $('#catSpesialis').val();
-          var jenisKelamin = document.getElementsByName('jk_group');
+          var namaDokter = $('#namaDokter').val();
+          var kota = $('#kota').val();
+          var spesialis = $('#spesialis').val();
+          var jnsKelamin = document.getElementsByName('jk_group');
+          var jk_group = '';
+
+          for (var i = 0; i < jnsKelamin.length; i++) {
+            jk_group[i]
+            if (jnsKelamin[i].checked)
+            {
+              jk_group = jnsKelamin[i].value;
+            }
+          }
           
           $.ajax({
             url:"<?php echo base_url('c_dashboard/filter_dokter') ?>",
             method:"POST",
-            data:{city:city, spesialis:spesialis, jenisKelamin:jenisKelamin},
+            data:{namaDokter:namaDokter, kota:kota, spesialis:spesialis, jk_group:jk_group},
             success:function(data)
             {
-              alert(jenisKelamin.value);
               $('#dataDokter').html(data);
+            }
+          });
+
+        });
+      $('#btnSubmit-faskes').click(function(){
+          var namaFaskes = $('#namaFaskes').val();
+          var fasKota = $('#fasKota').val();
+          var fasKlinik = $('#fasKlinik').val();
+          var jamKesehatan = document.getElementsByName('jamkes');
+          var jamkes = [];
+
+          for (var i = 0; i < jamKesehatan.length; i++) {
+            if (jamKesehatan[i].checked) {
+              // jamkes += '"intIDJamKes'+(i+1)+'" => '+ jamKesehatan[i].value +'\n';
+              jamkes += jamKesehatan[i].value;
+              // jamkes += 1;
+            }
+            else {
+              // jamkes += '"intIDJamKes'+(i+1)+'" => '+0 +'\n';
+              jamkes += 0;
+            }
+          }
+
+          $.ajax({
+            url:"<?php echo base_url('c_dashboard/filter_faskes') ?>",
+            method:"POST",
+            data:{namaFaskes:namaFaskes, fasKota:fasKota, fasKlinik:fasKlinik, jamkes:jamkes},
+            success:function(data)
+            {
+              alert(jamkes);
+              $('#dataFaskes').html(data);
             }
           });
 

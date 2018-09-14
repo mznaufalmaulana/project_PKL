@@ -1,10 +1,19 @@
-<form action="<?php echo base_url('c_dashboard') ?>" class="form-horizontal" role="form" method="POST">
+<!-- <form action="<?php //echo base_url('c_dashboard') ?>" class="form-horizontal" role="form" method="POST"> -->
+                <!-- Cari Faskes -->
+                <div class="row row-xs mg-t-20">
+                  <label class="col-sm-3 form-control-label">Cari Fasilitas Kesehatan</label>
+
+                  <div class="col-sm-9 mg-t-10 mg-sm-t-0">
+                    <input class="form-control" type="text" id="namaFaskes" name="namaFaskes" placeholder="Masukkan Nama Fasilitas Kesehatan">
+                  </div>
+                </div> <!-- Akhir form cari Faskes -->
+
                 <!-- pilih kota -->
                 <div class="row row-xs mg-t-20">
                   <label class="col-sm-3 form-control-label">Pilih Kota</label>
 
                   <div class="col-sm-9 mg-t-10 mg-sm-t-0">
-                    <select class="form-control" id="faskk" name="faskota">
+                    <select class="form-control" id="fasKota" name="fasKota">
                       <option value="0" disabled selected>Pilih Kota</option>
                       <?php
                         foreach ($faskes_kota as $key => $value) {
@@ -20,7 +29,7 @@
                   <label class="col-sm-3 form-control-label">Pilih Klinik</label>
 
                   <div class="col-sm-9 mg-t-10 mg-sm-t-0">
-                    <select class="form-control" id="faskk" name="fasklinik">
+                    <select class="form-control" id="fasKlinik" name="fasKlinik">
                       <option value="0" disabled selected>Pilih Klinik</option>
                       <?php
                         foreach ($faskes_klinik as $key => $value) {
@@ -45,15 +54,15 @@
                 <div class="row row-xs mg-t-20">
                   <div class="col-sm-3 form-control-label"></div>
                   <div class="col-sm-9 mg-t-10 mg-sm-t-0">
-                    <button type="done" class="btn btn-primary" id="btnSubmitFilter">Sorting</button>
+                    <input class="btn btn-primary" type="button" name="btnSubmit-faskes" id="btnSubmit-faskes" value="Cari">
                   </div>
                 </div> <!-- Akhir Tombol -->
-</form>
-<?php
-$i = 0;
-foreach ($data_faskes as $key => $value) {
+<!-- </form> -->
+<div class="card" id="dataFaskes">
+  <?php
+  $i = 0;
+  foreach ($data_faskes as $key => $value) {
   ?>
-  <div class="card">
     <div class="card-body">
       <table class="mg-b-0">
         <tbody>
@@ -66,20 +75,20 @@ foreach ($data_faskes as $key => $value) {
                   <?= $value['txtAlamat'] ?> <br>
                   <?= $value['txtKota'].", ".$value['txtProvinsi']; ?>, Indonesia <br>
                   <?php
-                    $keys = array_keys($list_layanan);
-                    for ($j = 0; $j < count($list_layanan[$i]); $j++){
-                      echo $list_layanan[$i][$j]['txtJenisPelayanan'];
-                      if ($j+1 < count($list_layanan[$i])){
-                          echo ", ";
-                      }
-                    }
-                    echo "<br>";
-                    for ($j = 0; $j < count($list_jamkes[$i]); $j++){
-                      echo $list_jamkes[$i][$j]['txtJenisJamKes'];
-                      if ($j+1 < count($list_jamkes[$i])){
-                          echo ", ";
-                      }
-                    } $i++;
+                    // $keys = array_keys($list_layanan);
+                    // for ($j = 0; $j < count($list_layanan[$i]); $j++){
+                    //   echo $list_layanan[$i][$j]['txtJenisPelayanan'];
+                    //   if ($j+1 < count($list_layanan[$i])){
+                    //       echo ", ";
+                    //   }
+                    // }
+                    // echo "<br>";
+                    // for ($j = 0; $j < count($list_jamkes[$i]); $j++){
+                    //   echo $list_jamkes[$i][$j]['txtJenisJamKes'];
+                    //   if ($j+1 < count($list_jamkes[$i])){
+                    //       echo ", ";
+                    //   }
+                    // } $i++;
                   ?>
                 </p>
             </td>
@@ -87,5 +96,5 @@ foreach ($data_faskes as $key => $value) {
         </tbody>
       </table>
     </div>
-  </div>
-<?php } ?>
+  <?php } ?>
+</div>
