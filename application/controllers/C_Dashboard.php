@@ -58,16 +58,6 @@ class C_Dashboard extends MY_Controller
 		$retVal ['faskes_kota'] = $this->m_faskes->get_filter_kota();
 		$retVal ['faskes_klinik'] = $this->m_faskes->get_filter_klinik();
 		$retVal ['faskes_jamkes'] = $this->m_faskes->get_filter_jamkes();
-
-		// $retVal['list_layanan'];
-		// foreach ($retVal['data_faskes'] as $key => $value) {
-		// 	if (isset($value['intIDPartner'])) {
-		// 		echo($value['intIDPartner']);
-		// 		$retVal['list_layanan'] .= $this->m_faskes->get_list_layanan($value['intIDPartner']);
-		// 	}
-		// }
-		// echopre($retVal['list_layanan']);die;
-
 		$retVal ['list_layanan'] = array($this->m_faskes->get_list_layanan(1),$this->m_faskes->get_list_layanan(2),$this->m_faskes->get_list_layanan(3),$this->m_faskes->get_list_layanan(4));
 		$retVal ['list_jamkes'] = array($this->m_faskes->get_list_jamkes(1),$this->m_faskes->get_list_jamkes(2),$this->m_faskes->get_list_jamkes(3),$this->m_faskes->get_list_jamkes(4));
 		$this->load->view('dashboard/content', $retVal);

@@ -104,12 +104,9 @@
 
           for (var i = 0; i < jamKesehatan.length; i++) {
             if (jamKesehatan[i].checked) {
-              // jamkes += '"intIDJamKes'+(i+1)+'" => '+ jamKesehatan[i].value +'\n';
               jamkes += jamKesehatan[i].value;
-              // jamkes += 1;
             }
             else {
-              // jamkes += '"intIDJamKes'+(i+1)+'" => '+0 +'\n';
               jamkes += 0;
             }
           }
@@ -120,7 +117,7 @@
             data:{namaFaskes:namaFaskes, fasKota:fasKota, fasKlinik:fasKlinik, jamkes:jamkes},
             success:function(data)
             {
-              alert(jamkes);
+              // alert(jamkes);
               $('#dataFaskes').html(data);
             }
           });
