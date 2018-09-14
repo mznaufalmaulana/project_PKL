@@ -74,7 +74,12 @@ class C_Dashboard extends MY_Controller
 		$output = '';
 
 		if (count($data)==0) {
-			$output .= 'Data Tidak Ditemukan';
+			$output .= '
+						<br><div class="alert alert-danger mg-b-0 text-center" role="alert">
+							<strong class="d-block d-sm-inline-block-force">Maaf!</strong>
+							Data yang Anda Cari Tidak Ditemukan
+						</div>
+					';
 		}
 		else {
 			foreach ($data as $key => $value) {
@@ -151,7 +156,12 @@ class C_Dashboard extends MY_Controller
 		// echopre($retVal);die;
 
 		if (count($retVal)==0) {
-			$output .= 'Data Tidak Ditemukan';
+			$output .= '
+						<br><div class="alert alert-danger mg-b-0 text-center" role="alert">
+							<strong class="d-block d-sm-inline-block-force">Maaf!</strong>
+							Data yang Anda Cari Tidak Ditemukan
+						</div>
+					';
 		}
 		else {
 			foreach ($retVal as $key => $value) {
