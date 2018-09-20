@@ -33,6 +33,9 @@
                 } else {
                   $imgAvatar = BASE_THEME.'img/user_default.png';
                 }
+                if (isset($value['dtTanggalLahir'])) {
+                  $tanggal = explode("T", $value['dtTanggalLahir']);
+                }
               ?>
             <div class="col-md-3">
               <img class="wd-250" src="<?= $imgAvatar ?>">
@@ -40,6 +43,7 @@
             <div class="col-md-9">
               <div class="card pd-20 pd-sm-40 form-layout form-layout-4">
                 <input type="text" name="idUser" value="<?= $isLogin ?>" hidden>
+                <input type="text" name="avatar" value="<?= $value['txtAvatar'] ?>">
                 <div class="row row-xs" title="Nama Pengguna">
                   <label class="col-sm-4 form-control-label"><span class="tx-danger">*</span> Nama Pengguna</label>
                   <div class="col-sm-8 mg-t-10 mg-sm-t-0">
@@ -67,7 +71,7 @@
                 <div class="row row-xs mg-t-20" title="Alamat">
                   <label class="col-sm-4 form-control-label"><span class="tx-danger">*</span> Alamat</label>
                   <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                    <textarea rows="4" name="alamat" class="form-control" value="<?= $value['txtAlamat']; ?>" placeholder="Masukkan Alamat Anda"></textarea>
+                    <textarea rows="4" name="alamat" class="form-control" placeholder="Masukkan Alamat Anda"><?= $value['txtAlamat']; ?></textarea>
                   </div>
                 </div>
                 <div class="row row-xs mg-t-20" title="Nomor Telepon">
@@ -81,7 +85,7 @@
                   <label class="col-sm-4 form-control-label"><span class="tx-danger">*</span> Jenis Jaminan Kesehatan</label>
                   <div class="col-sm-8 mg-t-10 mg-sm-t-0">
                     <select class="form-control" name="jenisJamkes">
-                      <option value="0" disabled selected>Pilih Jenis Jaminan Kesehatan</option>
+                      <option value="0" selected>Pilih Jenis Jaminan Kesehatan</option>
                       <option value="0">Tidak Ada</option>
                       <?php foreach ($dataJamkes as $key => $value) { ?>
                         <option value="<?= $value['intIDJenisJamKes'] ?>"><?= $value['txtJenisJamKes'] ?></option>
@@ -94,7 +98,7 @@
                 <div class="row row-xs mg-t-20" title="Nomor Jaminan Kesehatan">
                   <label class="col-sm-4 form-control-label"><span class="tx-danger">*</span> Nomor Jaminan Kesehatan</label>
                   <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                    <input type="text" name="noJamkes" class="form-control" value="<?= $value['txtNoJaminanKesehatan']; ?>" placeholder="Masukkan Nomor Jaminan Kesehatan Anda" required>
+                    <input type="text" name="noJaminanKesehatan" class="form-control" value="<?= $value['txtNoJaminanKesehatan']; ?>" placeholder="Masukkan Nomor Jaminan Kesehatan Anda" required>
                   </div>
                 </div>
                 <div class="row row-xs mg-t-20" title="Nomor Jaminan Kesehatan">

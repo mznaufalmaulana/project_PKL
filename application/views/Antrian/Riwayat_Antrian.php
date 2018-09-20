@@ -3,7 +3,7 @@
       $tanggal;
       if ($value['intStatus'] == 1)
       {
-        $warna = 'green';
+        $warna = '#008040';
       }
       else
       {
@@ -15,23 +15,24 @@
     ?>
       <div class="row row-sm mg-t-15 mg-sm-t-20">
 
-        <div class="col-md-12" style="background-color: <?php echo $warna ?>; padding-left: 0px;">
-          <div class="card pd-20 pd-sm-40">
-            <h4 class="card-body-title"> <?= $value['txtPartnerName'] ?> </h4>
+        <div class="col-md-12">
+          <div style="background-color: <?= $warna ?>; color: white; padding: 20px 0px 5px 30px;">
+            <h4> <?= $value['txtPartnerName'] ?> </h4>
             <p class="mg-b-20 mg-sm-b-30"> <?= $tanggal[0] ?> </p>
-            <hr/>
+          </div>
+          <div class="card pd-20 pd-sm-40">
             <table class="mg-b-0">
               <tbody>
                 <tr>
                   <td>
                     No. Antrian Loket <br>
-                    <h5><?= $value['txtNoAntrianLoket'] ?></h5>
+                    <h3 style="color: #fb9337;"><b><?= $value['txtNoAntrianLoket'] ?></b></h3>
                     Loket  <b> <?= $value['txtLoket'] ?> </b><br>
                     No. Antrian Saat Ini : <?= $value['txtNoAntrianLoketSaatIni'] ?>
                   </td>
                   <td>
                     No. Antrian Pelayanan <br>
-                    <h5><?= $value['txtNoAntrianPoli'] ?></h5>
+                    <h3 style="color: #fb9337;"><b><?= $value['txtNoAntrianPoli'] ?></b></h3>
                     <b> <?= $value['txtJenisPelayanan'] ?> </b><br>
                     No. Antrian Saat Ini : <?= $value['txtNoAntrianPoliSaatIni'] ?>
                   </td>

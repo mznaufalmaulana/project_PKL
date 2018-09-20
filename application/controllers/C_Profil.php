@@ -26,6 +26,7 @@ class C_Profil extends CI_Controller {
 	{
 		$image;
 		$check;
+		$data;
 		if (isset($_POST['submit'])) {
 			# code...
 			$dt['intIDUser'] = $this->input->post("idUser");
@@ -36,15 +37,24 @@ class C_Profil extends CI_Controller {
 			$dt['txtAlamat'] = $this->input->post("alamat");
 			$dt['txtPhone'] = $this->input->post("noTelp");
 			$dt['intIDJaminanKesehatan'] = $this->input->post("jenisJamkes");
-			$dt['txtNoJaminanKesehatan'] = $this->input->post("noJamkes");
+			$dt['txtNoJaminanKesehatan'] = $this->input->post("noJaminanKesehatan");
 
-			$check = getimagesize($_FILES['fotoProfil']['tmp_name']);
-			$image = base64_encode(file_get_contents($_FILES["fotoProfil"]["tmp_name"]));
-			$image = 'data:'.$check["mime"].';base64,'.$image;
 
-			$dt['txtAvatar'] = $image;
+			// $data = file_get_contents($_FILES["fotoProfil"]["tmp_name"]);
+			$data = $_FILES['fotoProfil']['name'];
+
+			if ($data != '') {
+				$check = getimagesize($_FILES['fotoProfil']['tmp_name']);
+				$image = base64_encode(file_get_contents($_FILES["fotoProfil"]["tmp_name"]));
+				$image = 'data:'.$check["mime"].';base64,'.$image;
+				$dt['txtAvatar'] = $image;
+			} else {
+				$dt['txtAvatar'] = $this->input->post("avatar");
+				// echopre($dt['txtAvatar']);die;
+			}
+
 		}
-		// echopre($dt);die;
+		// echopre($data);die;
 		$retVal['dataProfil'] = $this->m_user->insert_data_update($dt);
 		$idUser = $this->input->post("idUser");
 		$redirect_url = base_url()."c_profil?idUser=".$idUser;

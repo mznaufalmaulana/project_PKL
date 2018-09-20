@@ -39,7 +39,7 @@
           ?>
           <div class="row pd-t-20">
             <div class="col-md-3">
-              <img class="wd-200" src="<?php echo $imgAvatar ?>">
+              <img class="wd-200" src="<?= $imgAvatar ?>">
             </div>
             <div class="col-md-9">
               <ul class="profile-info-detail">
@@ -47,11 +47,12 @@
                   <b><font size="6"><?= $value['txtNamaUser'] ?> </font></b>
                   <a href="<?php echo base_url('c_profil/editProfil').'?idUser='.$isLogin; ?>" title="Edit Profil">&nbsp;<i class="icon ion-edit"></i>&nbsp;Edit Profil</a>
                 </p>
-
+              
                 <ul class="list-inline">
                   
                   <li class="mg-t-10" title="Nomor KTP">
-                    <i class="fa fa-credit-card"></i>
+                    <i class="fa fa-credit-card"> Nomor KTP</i>
+                    <!-- <p>Nomor KTP</p> -->
                     &nbsp;<?= $value['txtNoKTP'] ?>
                   </li>
 
