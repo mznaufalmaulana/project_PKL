@@ -43,7 +43,7 @@
             <div class="col-md-9">
               <div class="card pd-20 pd-sm-40 form-layout form-layout-4">
                 <input type="text" name="idUser" value="<?= $isLogin ?>" hidden>
-                <input type="text" name="avatar" value="<?= $value['txtAvatar'] ?>">
+                <input type="text" name="avatar" value="<?= $value['txtAvatar'] ?>" hidden>
                 <div class="row row-xs" title="Nama Pengguna">
                   <label class="col-sm-4 form-control-label"><span class="tx-danger">*</span> Nama Pengguna</label>
                   <div class="col-sm-8 mg-t-10 mg-sm-t-0">
